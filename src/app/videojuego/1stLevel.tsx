@@ -155,6 +155,10 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
     juegoKaplay.loadSprite("redbox", "red-border-box.png");
  
     juegoKaplay.onLoad(async () => {
+
+      window.addEventListener("click", () => {
+        document.body.focus();
+      }, { once: true });
         //Practicando aqui
         SCREEN_RESOLUTION_X = window.innerWidth 
         SCREEN_RESOLUTION_Y = window.innerHeight 
