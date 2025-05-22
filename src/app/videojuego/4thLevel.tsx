@@ -143,7 +143,7 @@ export async function Nivel4(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
     juegoKaplay.loadSound("A0", "./sounds/A0.mp3");
     juegoKaplay.loadSound("A1", "./sounds/A1.mp3");
     juegoKaplay.loadSound("A2", "./sounds/A2.mp3");
-    juegoKaplay.loadSound("nivel1", "./oveja-dialogos/nivel1.wav");
+    juegoKaplay.loadSound("nivel1", "./oveja-dialogos/Nivel1.wav");
     juegoKaplay.loadSound("aprobado", "./oveja-dialogos/aprobado.wav");
     juegoKaplay.loadSound("perdido", "./oveja-dialogos/perdido.wav");
     juegoKaplay.loadSound("fallaste", "./oveja-dialogos/fallaste.wav");
