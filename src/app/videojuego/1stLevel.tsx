@@ -439,6 +439,9 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
               ]);
               sprite.frame = frame;
               juegoKaplay.play(sonido, { volume: 1, speed: 1.5, loop: false });
+              setTimeout(() => {
+                juegoKaplay.play(sonido, { volume: 1, speed: 1.2, loop: false });
+              }, 10); // doble intento para asegurar la reproducción
               spritesNotas.push(sprite);
               puntoPartida += 70;
             }
