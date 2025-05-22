@@ -26,7 +26,7 @@ export let cambioNivel = 0;
 export async function Nivel4(juegoKaplay:KAPLAYCtx<{},never>, setState:any, cambiarGanar:any,setStateA:any, cambiarGanarA:any,setState1:any, cambiarGanar1:any, setStateC:any, cambiarGanarC:any,setStateI:any, cambiarGanarI:any, Router:any,usuario: any,jugoNiveles:boolean) {
     // Referencia persistente para almacenar la instancia de Kaplay
    // setState(false);
-
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL;
     let existeNivelCuatro = false
     if(jugoNiveles){
       const nivelesUsuario = await obtenerNivelesUsuario(usuario.id_usuario)
@@ -537,7 +537,7 @@ export async function Nivel4(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
                                   
                 const obtenerDatosUsuario = async (estudiante_seleccionado: number) => {
     
-                  const datosEstudiante = await fetch("http://localhost:5555/estudiantes/" + estudiante_seleccionado)
+                  const datosEstudiante = await fetch(`${baseUrl}/estudiantes/` + estudiante_seleccionado)
                   const resultadoConsulta = await datosEstudiante.json()
                   console.log(resultadoConsulta)
 
@@ -613,7 +613,7 @@ export async function Nivel4(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
                                   
                 const obtenerDatosUsuario = async (estudiante_seleccionado: number) => {
     
-                  const datosEstudiante = await fetch("http://localhost:5555/estudiantes/" + estudiante_seleccionado)
+                  const datosEstudiante = await fetch(`${baseUrl}/estudiantes/` + estudiante_seleccionado)
                   const resultadoConsulta = await datosEstudiante.json()
                   console.log(resultadoConsulta)
 

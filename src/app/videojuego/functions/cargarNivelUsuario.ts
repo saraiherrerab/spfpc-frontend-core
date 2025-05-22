@@ -1,6 +1,7 @@
 export default async function cargarEvaluacionEstudiante(id_usuario: number, id_nivel : number, estatus: string){
       try {
-        const response = await fetch(`http://localhost:5555/niveles/${id_nivel}/usuario/${id_usuario}/agregar/estatus/${estatus}`, {
+        const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+        const response = await fetch(`${baseUrl}/niveles/${id_nivel}/usuario/${id_usuario}/agregar/estatus/${estatus}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

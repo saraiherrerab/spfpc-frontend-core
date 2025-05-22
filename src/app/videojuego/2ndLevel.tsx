@@ -8,6 +8,7 @@ import modificarNivelUsuario from "./functions/modificarNivelUsuario";
 
 export async function Nivel2(juegoKaplay:KAPLAYCtx<{},never>, setStateB:any, cambiarGanarB:any, setStateA:any, cambiarGanarA:any,setStateC:any, cambiarGanarC:any, Router:any,usuario: any,jugoNiveles:boolean){
 
+        const baseUrl = process.env.NEXT_PUBLIC_API_URL;
         let existeNivelUno = false
         if(jugoNiveles){
           const nivelesUsuario = await obtenerNivelesUsuario(usuario.id_usuario)
@@ -231,7 +232,7 @@ export async function Nivel2(juegoKaplay:KAPLAYCtx<{},never>, setStateB:any, cam
                                                           
                           const obtenerDatosUsuario = async (estudiante_seleccionado: number) => {
               
-                            const datosEstudiante = await fetch("http://localhost:5555/estudiantes/" + estudiante_seleccionado)
+                            const datosEstudiante = await fetch(`${baseUrl}/estudiantes/` + estudiante_seleccionado)
                             const resultadoConsulta = await datosEstudiante.json()
                             console.log(resultadoConsulta)
           
@@ -397,7 +398,7 @@ export async function Nivel2(juegoKaplay:KAPLAYCtx<{},never>, setStateB:any, cam
 
                         const obtenerDatosUsuario = async (estudiante_seleccionado: number) => {
             
-                          const datosEstudiante = await fetch("http://localhost:5555/estudiantes/" + estudiante_seleccionado)
+                          const datosEstudiante = await fetch(`${baseUrl}/estudiantes/` + estudiante_seleccionado)
                           const resultadoConsulta = await datosEstudiante.json()
                           console.log(resultadoConsulta)
 

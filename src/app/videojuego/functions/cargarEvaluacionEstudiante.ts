@@ -2,7 +2,8 @@ import Evaluacion_Estudiante from "../interfaces/informacion_estudiante.interfac
 
 export default async function cargarEvaluacionEstudiante(datos: Evaluacion_Estudiante){
       try {
-        const response = await fetch('http://localhost:5555/estudiantes/establecer/notas', {
+        const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+        const response = await fetch(`${baseUrl}/estudiantes/establecer/notas`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',

@@ -1,6 +1,7 @@
 export default async function obtenerNivelesUsuario(id_usuario: number){
       try {
-        const response = await fetch('http://localhost:5555/niveles/usuario/' + id_usuario, {
+        const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+        const response = await fetch(`${baseUrl}/niveles/usuario/` + id_usuario, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

@@ -27,7 +27,7 @@ function sleep(ms: number) {
 
 
 export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, cambiarGanar:any,setStateA:any, cambiarGanarA:any,setState1:any, cambiarGanar1:any,setStateI:any, cambiarGanarI:any,setStateC:any, cambiarGanarC:any, Router:any, usuario: any,jugoNiveles: boolean) {
-
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
   let existeNivelDos = false
   if(jugoNiveles){
     const nivelesUsuario = await obtenerNivelesUsuario(usuario.id_usuario)
@@ -118,7 +118,7 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
 
     const cargarEvaluacionEstudiante = async (datos: Evaluacion_Estudiante) => {
       try {
-        const response = await fetch('http://localhost:5555/estudiantes/establecer/notas', {
+        const response = await fetch(`${baseUrl}/estudiantes/establecer/notas`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -306,7 +306,7 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
 
                 if (usuario.rol === "ESTUDIANTE") {
                   const obtenerDatosUsuario = async (id: number) => {
-                    const response = await fetch(`http://localhost:5555/estudiantes/${id}`);
+                    const response = await fetch(`${baseUrl}/estudiantes/${id}`);
                     return await response.json();
                   };
 
@@ -506,7 +506,7 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
 
                   if (usuario.rol === "ESTUDIANTE") {
                     const obtenerDatosUsuario = async (estudiante_seleccionado: number) => {
-                      const datosEstudiante = await fetch("http://localhost:5555/estudiantes/" + estudiante_seleccionado);
+                      const datosEstudiante = await fetch(`${baseUrl}/estudiantes/` + estudiante_seleccionado);
                       const resultadoConsulta = await datosEstudiante.json();
                       console.log(resultadoConsulta);
                       return resultadoConsulta;
@@ -585,7 +585,7 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
                     setStateC(true);
                     if (usuario.rol === "ESTUDIANTE") {
                       const obtenerDatosUsuario = async (estudiante_seleccionado: number) => {
-                        const datosEstudiante = await fetch("http://localhost:5555/estudiantes/" + estudiante_seleccionado);
+                        const datosEstudiante = await fetch(`${baseUrl}/estudiantes/` + estudiante_seleccionado);
                         const resultadoConsulta = await datosEstudiante.json();
                         console.log(resultadoConsulta);
                         return resultadoConsulta;
@@ -663,7 +663,7 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
                   setStateC(true);
                   if (usuario.rol === "ESTUDIANTE") {
                     const obtenerDatosUsuario = async (estudiante_seleccionado: number) => {
-                      const datosEstudiante = await fetch("http://localhost:5555/estudiantes/" + estudiante_seleccionado);
+                      const datosEstudiante = await fetch(`${baseUrl}/estudiantes/` + estudiante_seleccionado);
                       const resultadoConsulta = await datosEstudiante.json();
                       console.log(resultadoConsulta);
                       return resultadoConsulta;

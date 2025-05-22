@@ -26,7 +26,7 @@ export let cambioNivel = 0;
 export async function Nivel5(juegoKaplay:KAPLAYCtx<{},never>, setState5:any, cambiarGanar5:any,setStateA:any, cambiarGanarA:any,setStateC:any, cambiarGanarC:any, Router:any,usuario: any,jugoNiveles:boolean) {
     // Referencia persistente para almacenar la instancia de Kaplay
    // setState(false);
-
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL;
        let existeNivelCinco = false
        if(jugoNiveles){
          const nivelesUsuario = await obtenerNivelesUsuario(usuario.id_usuario)
@@ -283,7 +283,7 @@ export async function Nivel5(juegoKaplay:KAPLAYCtx<{},never>, setState5:any, cam
                                                   
                   const obtenerDatosUsuario = async (estudiante_seleccionado: number) => {
       
-                    const datosEstudiante = await fetch("http://localhost:5555/estudiantes/" + estudiante_seleccionado)
+                    const datosEstudiante = await fetch(`${baseUrl}/estudiantes/` + estudiante_seleccionado)
                     const resultadoConsulta = await datosEstudiante.json()
                     console.log(resultadoConsulta)
   
@@ -426,7 +426,7 @@ export async function Nivel5(juegoKaplay:KAPLAYCtx<{},never>, setState5:any, cam
                                                   
                   const obtenerDatosUsuario = async (estudiante_seleccionado: number) => {
       
-                    const datosEstudiante = await fetch("http://localhost:5555/estudiantes/" + estudiante_seleccionado)
+                    const datosEstudiante = await fetch(`${baseUrl}/estudiantes/` + estudiante_seleccionado)
                     const resultadoConsulta = await datosEstudiante.json()
                     console.log(resultadoConsulta)
   
@@ -556,7 +556,7 @@ export async function Nivel5(juegoKaplay:KAPLAYCtx<{},never>, setState5:any, cam
                                                   
                   const obtenerDatosUsuario = async (estudiante_seleccionado: number) => {
       
-                    const datosEstudiante = await fetch("http://localhost:5555/estudiantes/" + estudiante_seleccionado)
+                    const datosEstudiante = await fetch(`${baseUrl}/estudiantes/` + estudiante_seleccionado)
                     const resultadoConsulta = await datosEstudiante.json()
                     console.log(resultadoConsulta)
   
