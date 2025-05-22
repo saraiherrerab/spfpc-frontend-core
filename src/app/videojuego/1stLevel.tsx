@@ -136,16 +136,17 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
       }
     }
 
+    juegoKaplay.loadSound("A0", "./notas-musicales/A0.mp3");
+    juegoKaplay.loadSound("A1", "./notas-musicales/A1.mp3");
+    juegoKaplay.loadSound("A2", "./notas-musicales/A2.mp3");
     juegoKaplay.loadSound("sonidoPrueba", "button_09-190435.mp3");
-    const P1= juegoKaplay.loadSound("P1", "./sounds/P1.mp3");
+    juegoKaplay.loadSound("P1", "./sounds/P1.mp3");
     juegoKaplay.loadSound("P2", "./sounds/P2.mp3");
     juegoKaplay.loadSound("P3", "./sounds/P3.mp3");
     juegoKaplay.loadSound("P4", "./sounds/P4.mp3");
     juegoKaplay.loadSound("P5", "./sounds/P5.mp3");
     juegoKaplay.loadSound("P6", "./sounds/P6.mp3");
-    juegoKaplay.loadSound("A0", "./sounds/A0.mp3");
-    juegoKaplay.loadSound("A1", "./sounds/A1.mp3");
-    juegoKaplay.loadSound("A2", "./sounds/A2.mp3");
+
     juegoKaplay.loadSound("nivel1", "./oveja-dialogos/Nivel1.wav");
     juegoKaplay.loadSound("aprobado", "./oveja-dialogos/aprobado.wav");
     juegoKaplay.loadSound("perdido", "./oveja-dialogos/perdido.wav");
