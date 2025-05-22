@@ -211,7 +211,7 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
 
           const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
-          await wait (5000)
+          await wait (3000)
           setState1(false);
 
           console.log(usuario)
@@ -403,12 +403,6 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
             const secuencia = nuevoPatron.slice(0, -1);
             const ultimo = nuevoPatron[nuevoPatron.length - 1];
 
-            if (ultimoPatron === undefined) {
-              console.log("REPRODUCIENDO PRIMER PATRÓN");
-            } else {
-              console.log("PROXIMO PATRÓN:");
-            }
-
             console.log(nuevoPatron);
 
             let delay = esPrimeraRonda ? 5000 : 350;
@@ -440,9 +434,6 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
               ]);
               sprite.frame = frame;
               juegoKaplay.play(sonido, { volume: 1, speed: 1.5, loop: false });
-              setTimeout(() => {
-                juegoKaplay.play(sonido, { volume: 1, speed: 1.2, loop: false });
-              }, 10); // doble intento para asegurar la reproducción
               spritesNotas.push(sprite);
               puntoPartida += 70;
             }
