@@ -1,0 +1,245 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Jersey+15&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Pixelify+Sans&display=swap');
+
+.body_juego{
+  font-family: "Jersey 15", sans-serif;
+}
+  
+.button-container {
+  position: absolute;
+  top: 20px; /* Ajusta la posición según sea necesario */
+  left: 50%;
+  transform: translateX(-50%); /* Centrar horizontalmente */
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 20px;
+}
+  
+  .message-container {
+    position: absolute;
+    top: 40px; /* Ajusta la posición según sea necesario */
+    left: 50%;
+    transform: translateX(-50%); /* Centrar horizontalmente */
+    color: rgb(62, 50, 1);
+    background-image: url('../../../public/nivel1/correcto.png');  /* Fondo semitransparente */
+    padding:10px;
+    border-radius: 0px;
+    font-size: 35px;
+    font-family: "Jersey 15", sans-serif;
+    font-weight:400;
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation: aparecerDesaparecer 6s ease-in-out forwards;
+    line-height: 1.6; /* Ajusta este valor según el espaciado que desees */
+    width: 30vw; /* Ajusta el ancho según el contenido o un valor fijo */
+    height: 10vw; /* Ajusta el alto según el contenido o un valor fijo *//* 100% de la altura del viewport */
+    
+  }
+
+    .message-container-inicial{
+    position: absolute;
+    top: 0px; /* Ajusta la posición según sea necesario */
+    left: 50%;
+    transform: translateX(-100%); /* Centrar horizontalmente */
+    color: rgb(62, 50, 1);
+    background-image: url('../../../public/nivel1/cartelinicial.png');  /* Fondo semitransparente */
+    padding:0px;
+    border-radius: 0px;
+    font-size: 35px;
+    font-family: "Jersey 15", sans-serif;
+    font-weight:400;
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation: aparecerDesaparecer 6s ease-in-out forwards;
+    line-height: 1.6; /* Ajusta este valor según el espaciado que desees */
+    width: 50vw; /* Ajusta el ancho según el contenido o un valor fijo */
+    height: 50vw; /* Ajusta el alto según el contenido o un valor fijo *//* 100% de la altura del viewport */
+    
+  }
+
+  .message-container-incorrecto {
+    position: absolute;
+    top: 40px; /* Ajusta la posición según sea necesario */
+    left: 50%;
+    transform: translateX(-50%); /* Centrar horizontalmente */
+    color: rgb(62, 50, 1);
+    background-image: url('../../../public/nivel1/incorrecto.png');  /* Fondo semitransparente */
+    padding:10px;
+    border-radius: 0px;
+    font-size: 35px;
+    font-family: "Jersey 15", sans-serif;
+    font-weight:400;
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation: aparecerDesaparecer 6s ease-in-out forwards;
+    line-height: 1.6; /* Ajusta este valor según el espaciado que desees */
+    width: 30vw; /* Ajusta el ancho según el contenido o un valor fijo */
+    height: 12vw; /* Ajusta el alto según el contenido o un valor fijo *//* 100% de la altura del viewport */
+    
+  }
+
+  .message-container-nivel1 {
+    position: absolute;
+    top: 40px; /* Ajusta la posición según sea necesario */
+    left: 60%;
+    transform: translateX(-50%); /* Centrar horizontalmente */
+    color: rgb(62, 50, 1);
+    background-image: url('../../../public/nivel1/cartelnivel1.png');  /* Fondo semitransparente */
+    padding:10px;
+    border-radius: 0px;
+    font-size: 35px;
+    font-family: "Jersey 15", sans-serif;
+    font-weight:400;
+    background-repeat: no-repeat;
+    background-size: contain; /* Cambia cover a contain */
+    animation: aparecerDesaparecer 6s ease-in-out forwards;
+     /* Para que empiece desde la parte izquierda */
+    width: 50vw; /* Ajusta el ancho según el contenido o un valor fijo */
+    height: 30vw; /* Ajusta el alto según el contenido o un valor fijo *//* 100% de la altura del viewport */
+  }
+
+   .message-container5 {
+    position: absolute;
+    top: 40px; /* Ajusta la posición según sea necesario */
+    left: 60%;
+    transform: translateX(-50%); /* Centrar horizontalmente */
+    color: rgb(62, 50, 1);
+    background-image: url('../../../public/nivel5/nivel5.png');  /* Fondo semitransparente */
+    padding:10px;
+    border-radius: 0px;
+    font-size: 35px;
+    font-family: "Jersey 15", sans-serif;
+    font-weight:400;
+    background-repeat: no-repeat;
+    background-size: contain; /* Cambia cover a contain */
+    animation: aparecerDesaparecer 6s ease-in-out forwards;
+     /* Para que empiece desde la parte izquierda */
+    width: 50vw; /* Ajusta el ancho según el contenido o un valor fijo */
+    height: 30vw; /* Ajusta el alto según el contenido o un valor fijo *//* 100% de la altura del viewport */
+  }
+  .message-containerA {
+    position: absolute;
+    top: 40px; /* Ajusta la posición según sea necesario */
+    left: 60%;
+    transform: translateX(-50%); /* Centrar horizontalmente */
+    color: rgb(62, 50, 1);
+    background-image: url('../../../public/nivel3/cartelaprobado.png');  /* Fondo semitransparente */
+    padding:10px;
+    border-radius: 0px;
+    font-size: 35px;
+    font-family: "Jersey 15", sans-serif;
+    font-weight:400;
+    background-repeat: no-repeat;
+    background-size: contain; /* Cambia cover a contain */
+    animation: aparecerDesaparecer 6s ease-in-out forwards;
+     /* Para que empiece desde la parte izquierda */
+    width: 50vw; /* Ajusta el ancho según el contenido o un valor fijo */
+    height: 30vw; /* Ajusta el alto según el contenido o un valor fijo *//* 100% de la altura del viewport */
+  }
+
+  .message-containerC {
+    position: absolute;
+    top: 40px; /* Ajusta la posición según sea necesario */
+    left: 60%;
+    transform: translateX(-50%); /* Centrar horizontalmente */
+    color: rgb(62, 50, 1);
+    background-image: url('../../../public/nivel3/cartelreprobado.png');  /* Fondo semitransparente */
+    padding:10px;
+    border-radius: 0px;
+    font-size: 35px;
+    font-family: "Jersey 15", sans-serif;
+    font-weight:400;
+    background-repeat: no-repeat;
+    background-size: contain; /* Cambia cover a contain */
+    animation: aparecerDesaparecer 6s ease-in-out forwards;
+     /* Para que empiece desde la parte izquierda */
+    width: 50vw; /* Ajusta el ancho según el contenido o un valor fijo */
+    height: 30vw; /* Ajusta el alto según el contenido o un valor fijo *//* 100% de la altura del viewport */
+  }
+
+  .message-containerB {
+    position: absolute;
+    top: 40px; /* Ajusta la posición según sea necesario */
+    left: 60%;
+    transform: translateX(-50%); /* Centrar horizontalmente */
+    color: rgb(62, 50, 1);
+    background-image: url('../../../public/nivel2/cartelnivel2.png');  /* Fondo semitransparente */
+    padding:10px;
+    border-radius: 0px;
+    font-size: 35px;
+    font-family: "Jersey 15", sans-serif;
+    font-weight:400;
+    background-repeat: no-repeat;
+    background-size: contain; /* Cambia cover a contain */
+    animation: aparecerDesaparecer 6s ease-in-out forwards;
+     /* Para que empiece desde la parte izquierda */
+    width: 50vw; /* Ajusta el ancho según el contenido o un valor fijo */
+    height: 30vw; /* Ajusta el alto según el contenido o un valor fijo *//* 100% de la altura del viewport */
+  }
+  .message-container3 {
+    position: absolute;
+    top: 40px; /* Ajusta la posición según sea necesario */
+    left: 60%;
+    transform: translateX(-50%); /* Centrar horizontalmente */
+    color: rgb(62, 50, 1);
+    background-image: url('../../../public/nivel3/cartelnivel3.png');  /* Fondo semitransparente */
+    padding:10px;
+    border-radius: 0px;
+    font-size: 35px;
+    font-family: "Jersey 15", sans-serif;
+    font-weight:400;
+    background-repeat: no-repeat;
+    background-size: contain; /* Cambia cover a contain */
+    animation: aparecerDesaparecer 6s ease-in-out forwards;
+     /* Para que empiece desde la parte izquierda */
+    width: 50vw; /* Ajusta el ancho según el contenido o un valor fijo */
+    height: 30vw; /* Ajusta el alto según el contenido o un valor fijo *//* 100% de la altura del viewport */
+  }
+  @keyframes aparecerDesaparecer {
+    0% { opacity: 0; transform: translateX(-50%) scale(0.8); }
+    10% { opacity: 1; transform: translateX(-50%) scale(1); }
+    80% { opacity: 1; transform: translateX(-50%) scale(1); }
+    100% { opacity: 0; transform: translateX(-50%) scale(0.8); }
+  }
+
+p {
+  line-height: 0.3; /* Ajusta el interlineado (1.2 = 120% de la altura de la fuente) */
+}
+
+.elmensaje{
+  margin:50px;
+}
+
+.img_juego {
+  position: absolute;
+  top: 40px; /* Ajusta la posición según sea necesario */
+  left: 50%;
+  transform: translateX(-50%); /* Centrar horizontalmente */
+}
+
+.cartel-medieval {
+  position: absolute;
+  top: 40px; /* Ajusta la posición según sea necesario */
+  left: 50%;
+  transform: translateX(-50%); /* Centrar horizontalmente */
+  background-image: url('../../../public/sprites/UI/Carved_9Slides.png');  /* Fondo semitransparente */
+  font-family: "Jersey 15", sans-serif;
+  font-weight:400;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'MedievalSharp', cursive;
+  background: #d2b48c;
+  border: 8px double #4b2e05;
+  color: #2d1601;
+  padding: 2rem 4rem;
+  font-size: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  opacity: 0;
+}
+
+  .Bcontainer{
+    position:relative;
+  }

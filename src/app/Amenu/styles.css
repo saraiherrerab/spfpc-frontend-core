@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+.background_menu {
+    background-color: #6F4EF6;
+    
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra horizontalmente el contenido */
+    align-items: center; /* Centra verticalmente el contenido (opcional, si quieres centrar todo el contenedor) */
+    width: 100vw;
+    height: 100vh;
+    position: absolute; /* Asegura que se superponga al canvas */
+    top: 0;
+    left: 0;
+    font-family: "Roboto", sans-serif; /* Fuente */
+    color: white; /* Establece el color de la fuente a blanco */
+    font-weight:300;
+    font-size:16px;
+    gap: 35px;
+}
+
+.MButtonsContainer {
+    display: flex;
+    justify-content: center; /* Centra los botones horizontalmente */
+    gap: 60px; /* Espacio entre los botones (ajusta según necesites) */
+  }
+  
+
+.contenedor {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el contenido */
+    align-items: center; /* Centra verticalmente el contenido (opcional, si quieres centrar todo el contenedor) */
+    position: relative; /* Asegura que se superponga al canvas */
+    top: 0;
+    left: 0;
+    font-family: "Roboto", sans-serif; /* Fuente */
+    color: white; /* Establece el color de la fuente a blanco */
+    font-weight:300;
+    font-size:16px;
+    
+  }
+  
+
+
+
+
+  .descripcion {
+    display: flex; /* Asegura que .descripcion sea un contenedor flex */
+    flex-direction: column;
+    justify-content: center; /* Opcional: centra los elementos horizontalmente */
+    gap: 15px; /* Ajusta el valor según el espaciado deseado */
+    font-size: 16px;
+    text-align: center;
+}
+
+.boton-salir {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  z-index: 10; /* Asegura que quede encima de otros elementos */
+}
+
+.boton-salir:hover {
+  transform: scale(1.1);
+}

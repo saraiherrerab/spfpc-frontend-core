@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+.header-container{
+    display:flex;
+    background-color: #4B22F4; 
+    color: white;
+    font-size: 14px;          
+    font-family: "Inter", sans-serif;
+    width: 90%;
+    margin:0px;
+    border: none;
+    align-items: center; /* Alinea verticalmente el título y la búsqueda (opcional) */
+    padding-left: 5%;
+    padding-right: 5%;
+    justify-content: space-between; 
+   
+
+    
+}
+
+.header-logo{
+    font-weight: 500; /* Título en negrita */
+    font-size: 20px; 
+    cursor:pointer;
+
+}
+
+.header-button {
+    cursor: pointer;
+    margin-left: 20px;
+    margin-right: 20px;
+    position: relative;
+    color: white;  /* Color base del texto */
+    transition: color 0.3s ease;
+}
+
+.header-button::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px; /* Separación debajo del texto */
+    width: 0;
+    height: 2px;
+    background-color: white; /* Color del "stroke" */
+    transition: width 0.3s ease;
+}
+
+.header-button:hover {
+    color: #9c86f9; /* Cambia un poco el color del texto en hover si quieres */
+}
+
+.header-button:hover::after {
+    width: 100%; /* El subrayado se expande en hover */
+}
+
+.botones{
+    display:flex;
+    margin-right: 20px;
+}
+

@@ -1,0 +1,101 @@
+{ "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"json",
+         "target":"theofficialbackground.json"
+        }
+    },
+ "height":5,
+ "infinite":false,
+ "layers":[
+        {
+         "data":[6, 7, 7, 7, 8,
+            16, 17, 17, 17, 18,
+            16, 17, 17, 17, 18,
+            16, 17, 17, 17, 18,
+            26, 27, 63, 27, 28],
+         "height":5,
+         "id":1,
+         "name":"Capa de patrones 1",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":5,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "data":[41, 43, 42, 41, 44,
+            49, 51, 50, 0, 51,
+            0, 53, 54, 0, 55,
+            57, 58, 59, 0, 60,
+            0, 61, 63, 0, 64],
+         "height":5,
+         "id":2,
+         "name":"relieve",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":5,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "data":[1, 3, 42, 1, 43,
+            21, 23, 50, 49, 51,
+            53, 54, 0, 0, 0,
+            31, 32, 33, 0, 34,
+            61, 62, 0, 0, 0],
+         "height":5,
+         "id":6,
+         "name":"Capa de patrones 3",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":5,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "data":[0, 2, 2, 2, 3,
+            76, 22, 22, 22, 23,
+            79, 0, 0, 53, 55,
+            82, 0, 73, 74, 75,
+            0, 0, 0, 0, 0],
+         "height":5,
+         "id":7,
+         "name":"puente",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":5,
+         "x":0,
+         "y":0
+        }
+      ],
+ "nextlayerid":10,
+ "nextobjectid":1,
+ "orientation":"orthogonal",
+ "renderorder":"right-down",
+ "tiledversion":"1.11.2",
+ "tileheight":64,
+ "tilesets":[
+        {
+         "firstgid":1,
+         "source":"Tilemap_Flat.tsx"
+        }, 
+        {
+         "firstgid":41,
+         "source":"Tilemap_Elevation.tsx"
+        }, 
+        {
+         "firstgid":73,
+         "source":"Bridge_All.tsx"
+        }],
+ "tilewidth":64,
+ "type":"map",
+ "version":"1.10",
+ "width":5
+}

@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+.nombre-section {
+    display: flex;
+    flex-direction: column; /* Organiza el título y la descripción en columnas */
+    align-items: flex-start; /* Alinea el texto a la izquierda */
+    padding:10px;
+    margin:5px;
+    font-family: "Inter", sans-serif;
+  }
+  
+  .tituloNombre {
+    color: white; /* Color del título (puedes cambiarlo) */
+    font-size: 16px; /* Tamaño del título */
+    font-weight: bold; /* Título en negrita */
+    margin-bottom: 15px; /* Espacio debajo del título */
+    margin-right:10px;
+  }
+  
+
+  .Nombre {
+    color:white; /* Color de la descripción (puedes cambiarlo) */
+    font-size: 16px; /* Tamaño de la descripción */
+    font-weight: normal; /* Título en negrita */
+  }

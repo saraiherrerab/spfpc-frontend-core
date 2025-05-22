@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+.body_profile{
+  
+  min-height: 100vh; /* se asegura de que tenga al menos el alto del viewport */
+  background-color: #6F4EF6;
+
+}
+
+   
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+   background-color: #6F4EF6;
+}
+
+.titulo{
+    margin-bottom:15px;
+}
+
+.perfil{
+    display: flex; /* Convierte .perfil en un contenedor Flexbox */
+    flex-direction: row; /* Alinea los elementos hijos en fila (uno al lado del otro) */
+    align-items: flex-start; /* Alinea los elementos verticalmente al inicio */
+    height: 100vh; /* Asegúrate de que el contenedor tenga altura para ver el centrado */
+
+    flex: 1;
+    width: 100%;
+}
+
+
+
+.datosBloques{
+    align-items: center;
+    font-family: "Inter", sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Espacio entre filas */
+    position: relative; /* Asegura que se superponga al canvas */ 
+    margin: 0;
+    padding-right: 10rem;
+    height: 100%;
+    width: 100%;
+    
+}
+
+.datosUsario {
+    /* Estilos para el contenedor del span "holis" si los necesitas */
+    margin-right: 16px; /* Agrega un espacio a la derecha del span para separarlo de las notas */
+    width: 40%; /* O un valor fijo como width: 150px; */
+    display:flex;
+    padding-left: 60px;
+    padding-right:60px;
+    flex-direction: column;
+    height: 100%;
+    padding-top: 5%;
+  }
+
+.fila {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  gap: 6rem; /* Espacio entre columnas */
+  padding-bottom: 30px;
+  padding-top: 30px;
+  width: 100%;
+  
+}
+
+.fila_espacio_fondo {
+  margin-bottom: 40px;
+}
+.notas {
+  flex: 1;
+  height: 100%;
+  margin-bottom: 20px;
+
+}
+
+button {
+  background-color: #4B22F4; 
+  color: white;             
+  font-size: 14px;          
+  font-family: "Roboto", sans-serif; 
+  padding: 10px 20px;       
+  border: none;            
+  border-radius: 5px;       
+  cursor: pointer;          
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+  transition: background-color 0.3s ease, transform 0.2s ease; 
+  width:100%;
+  max-width: 380px;  
+  margin-top: 6px;
+}
+
+
+button:hover {
+  background-color: #3A1AD0; 
+  transform: translateY(-2px); 
+}
+
+
+button:active {
+  background-color: #3217B3; 
+  transform: translateY(0);  
+}
+
+
+button:disabled {
+  background-color: #B0AEC5; 
+  cursor: not-allowed;       
+  opacity: 0.6;             
+}

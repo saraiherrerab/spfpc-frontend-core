@@ -1,0 +1,13 @@
+/* Archivo: ImageHalfRight.css */
+
+
+.image-section {
+    width: 50vw;              /* Ocupa la mitad derecha */
+    display: flex;
+}
+
+.image-section img {
+    max-width: 50vw;          /* Imagen responsiva */
+    max-height: 100%;          /* Ajustar para que no se desborde */
+    object-fit: contain;       /* Ajusta el tamaño sin deformarla */
+}

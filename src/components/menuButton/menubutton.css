@@ -1,0 +1,27 @@
+.menu-button {
+    display: flex;
+    flex-direction: column; /* Coloca la imagen y el texto en columna */
+    align-items: center; /* Centra la imagen y el texto horizontalmente */
+    justify-content: center; /* Centra la imagen y el texto verticalmente */
+    width: 180px; /* Ajusta el ancho del botón */
+    height: 180px; /* Ajusta la altura del botón */
+    border-radius: 50%; /* Hace que el botón sea un círculo */
+    border: none;
+    background-color: white; /* Botón blanco */
+    cursor: pointer;
+    padding: 10px; /* Agrega un pequeño padding para el contenido */
+  }
+  
+  .menu-button:hover {
+    transform: scale(1.1); /* Hace que el botón sea un poco más grande al hacer hover */
+    box-shadow: 0 4px 8px rgba(12, 10, 10, 0.2); /* Agrega una sombra sutil */
+   }
+
+  .button-image {
+    width: 80px; /* Ajusta el tamaño de la imagen */
+    height: 80px; /* Ajusta el tamaño de la imagen */
+    margin-bottom: 5px; /* Espacio entre la imagen y el texto */
+    
+  }
+  
+

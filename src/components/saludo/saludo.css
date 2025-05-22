@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+.saludo{
+    font-family: "Roboto", sans-serif; /* Fuente */
+    color: white; /* Establece el color de la fuente a blanco */
+    font-weight:300;
+    font-size:20px;
+}

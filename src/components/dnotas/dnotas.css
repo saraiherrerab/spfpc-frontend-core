@@ -1,0 +1,42 @@
+.notas-section {
+    background-color: white; /* Fondo blanco */
+    border-radius: 10px; /* Esquinas redondeadas (ajusta el valor según desees) */
+    padding: 15px; /* Espacio interno alrededor del texto */
+    display: flex;
+    flex-direction: column; /* Organiza el título y la descripción en columnas */
+    align-items: flex-start; /* Alinea el texto a la izquierda */
+    padding:30px;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 10pxs;
+    margin-right:10px;
+  }
+  
+  .tituloNotas {
+    color: black; /* Color del título (puedes cambiarlo) */
+    font-size: 1.2em; /* Tamaño del título */
+    font-weight: bold; /* Título en negrita */
+    margin-bottom: 15px; /* Espacio debajo del título */
+    width: 100%;
+  }
+  
+
+  .descripcionN {
+    color: black; /* Color de la descripción (puedes cambiarlo) */
+    font-size: 1em; /* Tamaño de la descripción */
+    width: 100%;
+  }
+
+  .fila_nota {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .fila_nota > .col30 {
+  width: 30%;
+}
+
+.fila_nota > .col70 {
+  width: 70%;
+}

@@ -1,0 +1,22 @@
+.foto-container {
+    display: flex;
+    flex-direction: column; /* Coloca la imagen y el texto en columna */
+    align-items: center; /* Centra la imagen y el texto horizontalmente */
+    justify-content: center; /* Centra la imagen y el texto verticalmente */
+    width: 250px; /* Ajusta el ancho del botón */
+    height: 250px; /* Ajusta la altura del botón */
+    border-radius: 50%; /* Hace que el botón sea un círculo */
+    border: none;
+    background-color: white; /* Botón blanco */
+    cursor: pointer;
+    padding: 0;
+    margin-bottom:20px;
+  }
+
+  .foto {
+    display: block; /* Evita espacios extra debajo de la imagen */
+    width: 100%; /* La imagen ocupa el 100% del ancho del contenedor */
+    height: 100%; /* La imagen ocupa el 100% de la altura del contenedor */
+    object-fit: cover; /* La imagen se recorta para cubrir el contenedor manteniendo su aspecto */
+    border-radius: 50%; 
+  }

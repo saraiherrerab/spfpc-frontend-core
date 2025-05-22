@@ -1,0 +1,32 @@
+.donut-wrapper {
+  position: relative;
+  width: 80%;              /* El ancho manda */
+  aspect-ratio: 1 / 1;     /* Círculo perfecto */
+  max-width: 170px;
+  max-height: 190px;       /* Limitamos la altura máxima */
+  box-sizing: border-box;
+  /* Quitamos height para que aspect-ratio funcione correctamente */
+}
+
+
+.donut {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.donut-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  height: 70%;
+  background-color: white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.1em;
+}

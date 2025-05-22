@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Estilo para la etiqueta input */
+input {
+    width: 100%;            
+    max-width: 354px;  
+    height: 74;
+    padding: 10px;         /* Espaciado interno */
+    margin: 5px 0;        /* Espaciado externo */
+    border: 2px solid #c1BBBB; /* Borde con color */
+    border-radius: 5px;    /* Bordes redondeados */
+    font-size: 14px;       /* Tamaño de la letra */
+    font-family: "Roboto", sans-serif; /* Fuente */
+}
+
+/* Estilo para cuando el input está enfocado */
+input:focus {
+    outline: none;         /* Quitar el borde de enfoque predeterminado */
+    border-left: 2px solid #4B22F4; /* Cambiar color del borde */
+    color: #4B22F4;  
+}

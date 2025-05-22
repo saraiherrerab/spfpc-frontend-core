@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+.nombre-container {
+    display: flex;
+    justify-content: left;   /* centra verticalmente dentro del div contenedor */
+    align-items: left;    
+    flex-direction: row;   /* centra horizontalmente dentro del div contenedor */
+    width: 100%;
+    gap:10px;
+    margin-left: 20px;
+}
+
+.contenedor_informacion {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 30px;
+    grid-row-gap: 10px; 
+    padding-left: 20px;
+}
+
+.nombreTitulo {
+    font-weight: bold;
+    font-size: 24px;
+    font-family: "Inter", sans-serif;        /* texto más contenido */
+    text-align: left;          /* alinea el texto a la izquierda dentro del 80% */
+    margin: 0;
+    color:white;
+}

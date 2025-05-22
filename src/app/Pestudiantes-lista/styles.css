@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  font-size: 14px;
+  background-color: white;
+}
+
+
+
+.body_estudiantes {
+  background-color: white;
+  font-family: "Inter", sans-serif;
+}
+
+.encabezado-fondo {
+  background-color: black;
+}
+
+.estudiantes {
+  align-items: left;
+  color: black;
+}
+
+.listado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: 20px auto;
+}
+
+.tituloListado {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: black;
+}
+
+table {
+  background-color: white;
+  border-radius: 20px;
+  width: 100%;
+  margin-top: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-family: "Inter", sans-serif;
+  border: 0.5px solid #ccc;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+th {
+  color: rgb(141, 140, 140);
+  padding: 20px 25px;
+  background-color: white;
+  font-weight: bold;
+}
+
+.texto_central {
+  text-align: center;
+  vertical-align: middle;
+}
+
+th, td {
+  padding: 16px 18px;
+  text-align: left;
+  font-size: 1.1em;
+  border-bottom: 1px solid #ddd;
+}
+
+.display_flex {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 1px;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+th:first-child {
+  border-top-left-radius: 20px;
+  border-left: 0.01px solid #ccc;
+}
+
+th:last-child {
+  border-top-right-radius: 20px;
+  border-right: 0.01px solid #ccc;
+}
+
+.barraBusqueda {
+  margin-bottom: 10px;
+  width: 80%;
+  display: flex;
+  align-items: end;
+  margin-right: 20px;
+  margin-left: 45rem;
+}
+
+.search-input-container {
+  position: relative;
+  flex-grow: 1;
+}
+
+.search-icon {
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.search-input {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 0px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1em;
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.formulario-agregar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 48px;
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 30px;
+  border-radius: 16px;
+  background-color: #fff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  justify-content: center;
+  font-family: "Inter", sans-serif;
+}
+
+.formulario-agregar h3 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #222;
+}
+
+/* Campos de texto en general */
+.formulario-agregar input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 1em;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  height: 42px;
+  transition: border 0.2s ease-in-out;
+}
+
+.formulario-agregar input:focus {
+  border-color: #888;
+  outline: none;
+}
+
+.campo-form,
+.campo-usuario,
+.campo-clave {
+  flex: 1 1 45%;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Etiquetas */
+.campo-form label,
+.campo-usuario label,
+.campo-clave label {
+  margin-bottom: 6px;
+  font-weight: 500;
+  font-size: 0.95em;
+  color: #444;
+}
+
+/* Inputs de usuario y clave */
+.fila-usuario-clave {
+  display: flex;
+  gap: 40px;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-bottom: 0px;
+}
+
+.campo-usuario,
+.campo-clave {
+  width: 100%;
+}
+
+/* Mensajes de error */
+.mensaje-error-usuario,
+.mensaje-error-clave {
+  font-size: 0.85em;
+  margin-top: 6px;
+  color: red;
+  visibility: hidden;
+  min-height: 1em;
+}
+
+.mensaje-error-clave {
+  visibility: visible;
+}
+
+/* Botones */
+.formulario-agregar .botones {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.formulario-agregar .botones button {
+  background-color: #4B22F4;
+  color: white;
+  font-weight: 500;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.formulario-agregar .botones button:hover {
+  background-color: #333;
+}
+
+.formulario-agregar .botones button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+
+
+/* Responsive para móviles */
+@media (max-width: 600px) {
+  .formulario-agregar {
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .formulario-agregar h3 {
+    font-size: 1.2rem;
+  }
+
+  .campo-form,
+  .campo-usuario,
+  .campo-clave {
+    flex: 1 1 100%;
+  }
+
+  .formulario-agregar .botones {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .formulario-agregar .botones button {
+    width: 100%;
+  }
+}
+
+
+  .formulario-agregar .botones button {
+    width: 100%;
+  }
+

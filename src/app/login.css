@@ -1,0 +1,101 @@
+.input-container {
+    display: flex;       /* Activa Flexbox */
+    flex-direction: column; /* Cambia la dirección a columna */
+    gap: 5px;           /* Espaciado entre los inputs */
+    width: 100%;         /* Opcional: ajusta el tamaño */
+    align-items: center;  /* Alinea los elementos al inicio */
+  }
+  
+.form-container{
+    display: flex;      
+    flex-direction: column; 
+    gap: 10px;           
+    width: 100%;         
+    align-items: center;  
+}
+
+.login-container {
+  display: flex;
+  flex-direction: row; /* Los elementos estarán en fila */
+  align-items: center; /* Centra los elementos verticalmente */
+  height: 100vh; /* Asegúrate de que el contenedor tenga altura para ver el centrado */
+  width:100vw;
+}
+
+div{
+  margin:0px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Estilo para la etiqueta input */
+input {
+    width: 100%;            
+    max-width: 354px;  
+    height: 74;
+    padding: 10px;         /* Espaciado interno */
+    margin: 5px 0;        /* Espaciado externo */
+    border: 2px solid #c1BBBB; /* Borde con color */
+    border-radius: 5px;    /* Bordes redondeados */
+    font-size: 14px;       /* Tamaño de la letra */
+    font-family: "Roboto", sans-serif; /* Fuente */
+}
+
+/* Estilo para cuando el input está enfocado */
+input:focus {
+    outline: none;         /* Quitar el borde de enfoque predeterminado */
+    border-left: 2px solid #4B22F4; /* Cambiar color del borde */
+    color: #4B22F4;  
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+button {
+    background-color: #4B22F4; 
+    color: white;             
+    font-size: 14px;          
+    font-family: "Roboto", sans-serif; 
+    padding: 10px 20px;       
+    border: none;            
+    border-radius: 5px;       
+    cursor: pointer;          
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+    transition: background-color 0.3s ease, transform 0.2s ease; 
+    width:100%;
+    max-width: 380px;  
+    margin-top: 6px;
+}
+
+
+button:hover {
+    background-color: #3A1AD0; 
+    transform: translateY(-2px); 
+}
+
+
+button:active {
+    background-color: #3217B3; 
+    transform: translateY(0);  
+}
+
+
+button:disabled {
+    background-color: #B0AEC5; 
+    cursor: not-allowed;       
+    opacity: 0.6;             
+}
+
+
+.login-decorativo {
+  width: 120px;
+  margin: 0 auto 20px auto;
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.titulo-login{
+    color:#4B22F4; 
+    font-size: 18px;       /* Tamaño de la letra */
+    font-family: "Roboto", sans-serif; /* Fuente */
+    font-weight: bold;
+}

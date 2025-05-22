@@ -1,0 +1,45 @@
+{ "compressionlevel":-1,
+ "height":10,
+ "infinite":false,
+ "layers":[
+        {
+         "data":[11, 15, 15, 15, 15, 15, 15, 15, 15, 16,
+            31, 32, 32, 32, 32, 32, 32, 32, 32, 96,
+            31, 32, 32, 32, 32, 32, 32, 32, 32, 96,
+            31, 32, 32, 32, 32, 32, 32, 32, 32, 96,
+            31, 32, 32, 32, 32, 32, 32, 32, 32, 96,
+            31, 32, 32, 32, 32, 32, 32, 32, 32, 96,
+            31, 32, 32, 32, 32, 32, 32, 32, 32, 96,
+            31, 32, 32, 32, 32, 32, 32, 32, 32, 96,
+            31, 32, 32, 32, 32, 32, 32, 32, 32, 96,
+            111, 32, 112, 32, 112, 112, 112, 112, 112, 116],
+         "height":10,
+         "id":1,
+         "name":"Capa de patrones 1",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":10,
+         "x":0,
+         "y":0
+        }],
+ "nextlayerid":3,
+ "nextobjectid":1,
+ "orientation":"orthogonal",
+ "renderorder":"right-down",
+ "tiledversion":"1.11.2",
+ "tileheight":32,
+ "tilesets":[
+        {
+         "firstgid":1,
+         "source":"..\/..\/..\/..\/..\/Tilemap_Flat.tsx"
+        }, 
+        {
+         "firstgid":161,
+         "source":"..\/..\/..\/..\/..\/Tilemap_Elevation.tsx"
+        }],
+ "tilewidth":32,
+ "type":"map",
+ "version":"1.10",
+ "width":10
+}

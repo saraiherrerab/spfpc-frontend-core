@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.body_estudiantes {
+  /*background-color: #6F4EF6; */
+  background-color:white;
+  font-family: "Inter", sans-serif;
+ 
+
+}
+
+.encabezado-fondo{
+  background-color: black;
+}
+
+.estudiantes {
+  align-items: left;
+  /*color:white;*/
+  color:black; 
+}
+
+.listado {
+  display: flex; /* Habilita Flexbox para los hijos */
+  flex-direction: column; /* Alinea los hijos en columna (título y tabla) */
+  align-items: center; /* Centra los hijos horizontalmente (por defecto) */
+  width: 80%; /* Ancho del contenedor para que coincida con la tabla */
+  margin: 20px auto; /* Centra el contenedor en la página (ajusté el margin-top) */
+  
+}
+
+.tituloListado {
+  width: 100%; /* Ocupa todo el ancho del contenedor .listado */
+  text-align: left; /* Alinea el texto del título a la izquierda */
+  margin-bottom: 10px; /* Espacio entre el título y la tabla */
+  font-size: 16px;
+  color: black;
+}
+
+table {
+  background-color: white; /* Fondo blanco */
+  border-radius: 20px; /* Esquinas redondeadas */
+  width: 100%; /* La tabla ocupa el ancho del contenedor .listado */
+  margin-top: 0; /* Remuevo el margin-top de la tabla */
+  border-collapse: separate; /* Usa bordes separados */
+  border-spacing: 0; /* Elimina el espacio entre los bordes */
+  font-family: "Inter", sans-serif;
+  border: 0.5px solid #ccc; /* Contorno gris clarito */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombreado gris leve */
+}
+
+th {
+  color: rgb(141, 140, 140);
+  padding: 20px 25px; /* AUMENTAMOS el padding */
+}
+
+th,
+td {
+  padding: 16px 18px; /* Más espacio interno en las celdas (vertical y horizontal) */
+  text-align: left; /* Alinea el texto a la izquierda por defecto */
+  font-size: 1.1em; /* Letra un poco más grande */
+  border-bottom: 1px solid #ddd; /* Línea divisoria sutil entre filas */
+  padding: 20px 45px !important; /* AUMENTAMOS el padding */
+}
+
+th {
+  background-color: white;
+  font-weight: bold; /* Encabezados en negrita */
+}
+
+tr:last-child td {
+  border-bottom: none; /* Elimina el borde inferior de la última fila */
+}
+
+/* Opcional: Estilo al pasar el ratón por las filas */
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+th:first-child {
+  border-top-left-radius: 20px; /* Borde superior izquierdo redondeado */
+  border-left: 0.01px solid #ccc; /* Borde izquierdo */
+}
+
+th:last-child {
+  border-top-right-radius: 20px; /* Borde superior derecho redondeado */
+  border-right: 0.01px solid #ccc; /* Borde derecho */
+}
+
+
+/* ... otros estilos ... */
+
+.barraBusqueda {
+  margin-bottom: 10px;
+  width: 80%;
+  display: flex;
+  align-items: center; /* Alinea verticalmente los elementos */
+  margin-right:20px;
+}
+
+.search-input-container {
+  position: relative; /* Para posicionar el icono */
+  flex-grow: 1; /* El input ocupa el espacio restante */
+}
+
+.search-icon {
+  position: absolute; /* Posiciona la lupa dentro del contenedor */
+  right: -5px; /* Cambiamos 'left' a 'right' */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  opacity: 0.6;
+  cursor: pointer; /* Indica que es clickable */
+}
+
+.search-input {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left:15px;
+  padding-right:0px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1em;
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.encabezado{
+  display:flex;
+  display: flex; /* Habilita Flexbox para alinear el título y la búsqueda */
+  justify-content: space-between; /* Espacia el título a la izquierda y la búsqueda a la derecha */
+  align-items: center; /* Alinea verticalmente el título y la búsqueda (opcional) */
+  width: 100%; /* Ocupa todo el ancho del contenedor .listado */
+  margin-bottom: 20px; /* Espacio entre el header y la tabla */
+}
+/* Hemos eliminado los estilos del botón "Buscar" separado */
+
+/* ... otros estilos ... */

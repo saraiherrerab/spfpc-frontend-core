@@ -1,0 +1,56 @@
+              /*
+              {
+                urlTextura: "./nivel1/Water.png",
+                dimensionTexturasX: 2,
+                dimensionTexturasY: 2,
+                firstgid: 1
+              },
+              {
+                urlTextura: "./nivel1/Tilemap_Flat.png",
+                dimensionTexturasX: 20,
+                dimensionTexturasY: 8,
+                firstgid: 5
+              },
+              {
+                urlTextura: "./nivel1/Tilemap_Elevation.png",
+                dimensionTexturasX: 8,
+                dimensionTexturasY: 16,
+                firstgid: 165
+              },
+              {
+                urlTextura: "./nivel1/Tilemap_Flat.png",
+                dimensionTexturasX: 20,
+                dimensionTexturasY: 8,
+                firstgid: 5
+              },
+              {
+                urlTextura: "./nivel1/Tilemap_Flat.png",
+                dimensionTexturasX: 20,
+                dimensionTexturasY: 8,
+                firstgid: 5
+              },
+              {
+                urlTextura: "./nivel1/Bridge_All.png",
+                dimensionTexturasX: 6,
+                dimensionTexturasY: 8,
+                firstgid: 293
+              },
+              {
+                urlTextura: "./nivel1/Rocks_01.png",
+                dimensionTexturasX: 32,
+                dimensionTexturasY: 4,
+                firstgid: 341
+              },
+              {
+                urlTextura: "./nivel1/Rocks_04.png",
+                dimensionTexturasX: 32,
+                dimensionTexturasY: 4,
+                firstgid: 469
+              },
+              {
+                urlTextura: "./nivel1/Foam.png",
+                dimensionTexturasX: 48,
+                dimensionTexturasY: 6,
+                firstgid: 597
+              }
+              */
