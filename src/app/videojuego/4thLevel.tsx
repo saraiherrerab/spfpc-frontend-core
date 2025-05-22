@@ -2,7 +2,6 @@
 
 import {GameObj, KAPLAYCtx} from "kaplay";
 import generarEsquemaMapa from "../../MapsGenerator";
-import generarNumerosAzar from "../../utils/generarNumerosAzar";
 import Evaluacion_Estudiante from "./interfaces/informacion_estudiante.interface";
 import cargarEvaluacionEstudiante from "./functions/cargarEvaluacionEstudiante";
 import cargarNivelUsuario from "./functions/cargarNivelUsuario";
@@ -17,7 +16,6 @@ const TILED_MAP_HEIGHT_NUMBER: number = 16
 const TILED_WIDTH: number = SCREEN_RESOLUTION_X / TILED_MAP__WIDTH_NUMBER
 const TILED_HEIGHT: number = SCREEN_RESOLUTION_Y / TILED_MAP_HEIGHT_NUMBER
 let aciertos = 0;
-let nuevoSprite: GameObj;
 export let cambioNivel = 0;
 
 
@@ -26,6 +24,8 @@ export let cambioNivel = 0;
 export async function Nivel4(juegoKaplay:KAPLAYCtx<{},never>, setState:any, cambiarGanar:any,setStateA:any, cambiarGanarA:any,setState1:any, cambiarGanar1:any, setStateC:any, cambiarGanarC:any,setStateI:any, cambiarGanarI:any, Router:any,usuario: any,jugoNiveles:boolean) {
     // Referencia persistente para almacenar la instancia de Kaplay
    // setState(false);
+
+
     const baseUrl = process.env.NEXT_PUBLIC_API_URL;
     let existeNivelCuatro = false
     if(jugoNiveles){
@@ -83,25 +83,21 @@ export async function Nivel4(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
       },
     });
 
-     juegoKaplay.loadSprite("rock", "sprites/deco/Rocks_01.png", {
+    juegoKaplay.loadSprite("rock", "sprites/deco/Rocks_01.png", {
           sliceX: 8,
           sliceY: 1,
           anims: {
             quiet: { from: 0, to: 7, loop: true },
           },
-        });
+    });
 
-        juegoKaplay.loadSprite("oveja", "sprites/deco/HappySheep_Bouncing.png", {
-          sliceX: 6,
-          sliceY: 1,
-          anims: {
-            quiet: { from: 0, to: 5, loop: true },
-          },
-        });
-  
-
-
-
+    juegoKaplay.loadSprite("oveja", "sprites/deco/HappySheep_Bouncing.png", {
+      sliceX: 6,
+      sliceY: 1,
+      anims: {
+        quiet: { from: 0, to: 5, loop: true },
+      },
+    });
 
     juegoKaplay.loadSprite("heart", "sprites/heart.png", {
       sliceX: 1,
@@ -127,14 +123,8 @@ export async function Nivel4(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
       },
     });
 
-    let semicorchea1: GameObj;
-    let semicorchea2: GameObj;
-    let semicorchea3:GameObj;
-
- 
-
     juegoKaplay.loadSound("sonidoPrueba", "button_09-190435.mp3");
-    const P1= juegoKaplay.loadSound("P1", "./sounds/P1.mp3");
+    juegoKaplay.loadSound("P1", "./sounds/P1.mp3");
     juegoKaplay.loadSound("P2", "./sounds/P2.mp3");
     juegoKaplay.loadSound("P3", "./sounds/P3.mp3");
     juegoKaplay.loadSound("P4", "./sounds/P4.mp3");
@@ -149,12 +139,10 @@ export async function Nivel4(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
     juegoKaplay.loadSound("fallaste", "./oveja-dialogos/fallaste.wav");
     juegoKaplay.loadSound("bien", "./oveja-dialogos/bien.wav");
 
-
     juegoKaplay.loadSprite("redbox", "red-border-box.png");
 
     let puedePresionar: boolean = false;
         
-  
     juegoKaplay.onLoad(async () => {
         //Practicando aqui
         SCREEN_RESOLUTION_X = window.innerWidth 
@@ -188,16 +176,13 @@ export async function Nivel4(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
           dimensionTexturasX: 8,
           dimensionTexturasY: 16,
           firstgid: 165
-            },
-            {
+          },
+          {
             urlTextura: "./nivel2/Tilemap_Flat.png",
             dimensionTexturasX: 20,
             dimensionTexturasY: 8,
             firstgid: 5 //(esta comienza en 5)
           }
-
-              
-  
         ]
       )
       .then(  
@@ -206,32 +191,18 @@ export async function Nivel4(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
           juegoKaplay.play("nivel1", { volume: 1, speed: 1.5, loop: false });
           cambiarGanar1(true);
           setState1(true);
-          await sleep(2000)
+          await sleep(4500)
+
           const ovejas= juegoKaplay.get("oveja")
-
-
           const nomo = juegoKaplay.get("nomo")[0]
-
           const arbol = juegoKaplay.get("arbol")[0]
-    
           const construccion = juegoKaplay.get("construccion")[0]
           const construccion2 = juegoKaplay.get("construccion2")[0]
           const construccion3 = juegoKaplay.get("construccion3")[0]
           const colisiones = juegoKaplay.get("colisiones")
  
           let esPrimeraRonda = true;
-
-        /* const casa = juegoKaplay.add([
-            juegoKaplay.pos(400,-5),
-            juegoKaplay.sprite("casa1"),
-            juegoKaplay.scale(0.8),
-            juegoKaplay.health(3),
-            juegoKaplay.area(),
-            "casa",
-            { z: 1 } // Asegura que el jugador esté en una capa superior
-        ]);*/
-
-          
+   
           const velocidad = 440;
 
           const circle1 = juegoKaplay.add([
@@ -401,56 +372,49 @@ export async function Nivel4(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
 
           /*********************************/
 
-          
-
-          
-
-          
-
-
           async function patronesdinamicos(patrones_numeros: number[][], ultimoPatron?: number
-          ) {
+          ){
 
-            async function reproducirSecuencia(secuencia: number[]) {
-              for (const numeroAzar of secuencia) {
-                let frame = 0;
-                let sonido = "";
+          async function reproducirSecuencia(secuencia: number[]) {
+            for (const numeroAzar of secuencia) {
+              let frame = 0;
+              let sonido = "";
 
-                switch (numeroAzar) {
-                  case 0:
-                    frame = 1;
-                    sonido = "A0";
-                    break;
-                  case 1:
-                    frame = 0;
-                    sonido = "A1";
-                    break;
-                  case 2:
-                    frame = 2;
-                    sonido = "A2";
-                    break;
-                }
-
-                const nuevoSprite = juegoKaplay.add([
-                  juegoKaplay.pos(puntoPartida, juegoKaplay.center().y / 2 + puntoPartidaY - 80),
-                  juegoKaplay.sprite("notas1"),
-                  juegoKaplay.scale(0.1),
-                  { z: 2 },
-                  "notas1"
-                ]);
-
-                nuevoSprite.frame = frame;
-                juegoKaplay.play(sonido, { volume: 1, speed: 1.5, loop: false });
-
-                spritesNotas.push(nuevoSprite);
-                puntoPartida += 70;
-
-                await juegoKaplay.wait(0.4); // espera 400ms antes de la siguiente nota
+              switch (numeroAzar) {
+                case 0:
+                  frame = 1;
+                  sonido = "A0";
+                  break;
+                case 1:
+                  frame = 0;
+                  sonido = "A1";
+                  break;
+                case 2:
+                  frame = 2;
+                  sonido = "A2";
+                  break;
               }
 
-              // Aquí ya terminó toda la secuencia
-              console.log("Secuencia completada");
+              const nuevoSprite = juegoKaplay.add([
+                juegoKaplay.pos(puntoPartida, juegoKaplay.center().y / 2 + puntoPartidaY - 80),
+                juegoKaplay.sprite("notas1"),
+                juegoKaplay.scale(0.1),
+                { z: 2 },
+                "notas1"
+              ]);
+
+              nuevoSprite.frame = frame;
+              juegoKaplay.play(sonido, { volume: 1, speed: 1.5, loop: false });
+
+              spritesNotas.push(nuevoSprite);
+              puntoPartida += 70;
+
+              await juegoKaplay.wait(0.4); // espera 400ms antes de la siguiente nota
             }
+
+            // Aquí ya terminó toda la secuencia
+            console.log("Secuencia completada");
+          }
 
             console.log("Patronesdinamicos()")
             console.log("ARREGLO VIEJO ", patrones_numeros)
@@ -493,7 +457,7 @@ export async function Nivel4(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
             console.log(indiceAleatorio)
             console.log("********************************")
 
-            await sleep(1000)
+            await sleep(500)
 
             puedePresionar = true
 
@@ -600,8 +564,7 @@ export async function Nivel4(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
               setState(true);
               juegoKaplay.play("aprobado", { volume: 1, speed: 1.5, loop: false });
               await sleep(2000)
-              
-            //setTimeout(()=>{
+            
               construccion2.destroy();
               ovejas.forEach( (oveja: GameObj<any>) => {
                 oveja.play("quiet");
@@ -699,6 +662,8 @@ export async function Nivel4(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
 
             let respuestaPatronesDinamicos = await patronesdinamicos(patrones);
 
+            puedePresionar = true
+
             ultimo = respuestaPatronesDinamicos.ultimo_elemento
             indiceAlAzar = respuestaPatronesDinamicos.indice_aleatorio
             //patrones = [...respuestaPatronesDinamicos.nuevo_arreglo]
@@ -716,17 +681,12 @@ export async function Nivel4(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
               [0, 0, 1, 1, 0, 0, 1, 1, 0],
           ];
 
+          circle1.play("default");
 
-
-
-            
-
-            circle1.play("default");
-
+          puedePresionar = false
 
           let respuestaPatronesDinamicos = await patronesdinamicos(patrones);
-
-
+          puedePresionar = true
 
           let ultimo = respuestaPatronesDinamicos.ultimo_elemento
           let indiceAlAzar = respuestaPatronesDinamicos.indice_aleatorio
@@ -765,9 +725,7 @@ export async function Nivel4(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
               juegoKaplay.play("bien", { volume: 1, speed: 1.5, loop: false });
               await sleep(2000)
               
-              setTimeout(() => {
-                arbol.play("quiet");
-              }, 2000); 
+              await sleep(2000)
               
             }else{
               console.log("Fallaste" +ultimo)
@@ -779,27 +737,23 @@ export async function Nivel4(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
             }
 
             await validarAciertos(patrones,indiceAlAzar);
-          }
-
-            
-
-
+            }
           })
 
           circle2.onClick( async () => {
 
             if(puedePresionar){
-circle2.play("hover");
+              circle2.play("hover");
 
-            juegoKaplay.wait(0.4, () => {
-                circle2.play("default");
-            });
+              juegoKaplay.wait(0.4, () => {
+                  circle2.play("default");
+              });
 
-            juegoKaplay.play("A1", {
-              volume: 1, 
-              speed: 1.5, 
-              loop: false, 
-            });
+              juegoKaplay.play("A1", {
+                volume: 1, 
+                speed: 1.5, 
+                loop: false, 
+              });
 
             if(ultimo === 1){
   
@@ -812,9 +766,7 @@ circle2.play("hover");
 
               console.log("sumando mardito ", aciertos)
               
-              setTimeout(() => {
-                arbol.play("quiet");
-              }, 2000); 
+              await sleep(2000)
               
             }else{
               console.log("Fallaste" + ultimo)
@@ -852,9 +804,7 @@ circle2.play("hover");
               juegoKaplay.play("bien", { volume: 1, speed: 1.5, loop: false });
               await sleep(2000)
 
-              setTimeout(() => {
-                arbol.play("quiet");
-              }, 2000);
+              await sleep(2000)
               
             }else{
        
