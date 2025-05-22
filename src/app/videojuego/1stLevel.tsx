@@ -211,7 +211,7 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
 
           const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
-          await wait (3000)
+          await wait (5000)
           setState1(false);
 
           console.log(usuario)
@@ -266,11 +266,12 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
           let spritesNotas: GameObj[] = []; // Asegúrate de usar el tipo correcto para los sprites en Kaboom.js
   
           async function validarAciertos() {
-            const mostrarGananciaTemporal = () => {
+            const mostrarGananciaTemporal = async () => {
               cambiarGanar(true);
               juegoKaplay.play("bien", { volume: 1, speed: 1, loop: false });
               setState(true);
-              setTimeout(() => setState(false), 4000);
+              await sleep(4000)
+              setState(true);
             };
 
             const esperar = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
@@ -279,14 +280,14 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
               case 1:
                 construccion.destroy();
                 console.log("El mensaje es: " + aciertos);
-                mostrarGananciaTemporal();
+                await mostrarGananciaTemporal();
                 ultimo = await patronesdinamicos(patronesJuego);
                 puedePresionar = true
                 break;
 
               case 2:
                 console.log("El mensaje es: " + aciertos);
-                mostrarGananciaTemporal();
+                await mostrarGananciaTemporal();
                 ultimo = await patronesdinamicos(patronesJuego);
                 puedePresionar = true
                 break;
@@ -411,20 +412,21 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
             const ejecutarSecuencia = async (secuencia: number[]) => {
               for (const numeroAzar of secuencia) {
                 switch (numeroAzar) {
-                  case 0: crearNota(1, "A0"); break;
-                  case 1: crearNota(0, "A1"); break;
-                  case 2: crearNota(2, "A2"); break;
+                  case 0: await crearNota(1, "A0"); break;
+                  case 1: await crearNota(0, "A1"); break;
+                  case 2: await crearNota(2, "A2"); break;
                 }
-                await wait(400); // espera 400ms antes de la siguiente nota
               }
 
               
               // ✅ Aquí continúa el programa después de la secuencia
               console.log("Secuencia completada");
+              puedePresionar = true
+              console.log("puedePresionar", puedePresionar)
               // puedes llamar a otra función aquí
             };
 
-            function crearNota(frame: number, sonido: string) {
+            async function crearNota(frame: number, sonido: string) {
               const sprite = juegoKaplay.add([
                 juegoKaplay.pos(puntoPartida, juegoKaplay.center().y / 2 + puntoPartidaY - 80),
                 juegoKaplay.sprite("notas"),
@@ -433,7 +435,8 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
                 "notas",
               ]);
               sprite.frame = frame;
-              juegoKaplay.play(sonido, { volume: 1, speed: 1.5, loop: false });
+              juegoKaplay.play(sonido, { volume: 1, speed: 1, loop: false });
+              await sleep(1000)
               spritesNotas.push(sprite);
               puntoPartida += 70;
             }
@@ -468,9 +471,7 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
                 puedePresionar = false
                 await validarAciertos();
 
-                setTimeout(() => {
-                  arbol.play("quiet");
-                }, 2000);
+                await sleep(2000);
               } else {
                 puedePresionar = false
                 console.log("Fallaste", ultimo);
@@ -479,14 +480,12 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
                 cambiarGanarI(true);
 
                 if (vidas <= 0) {
-                  setTimeout(() => {
-                  console.log("TE MORISTE");
-                }, 5000);
+                  
                   
                   juegoKaplay.play("perdido", { volume: 1, speed: 1, loop: false });
                   cambiarGanarC(true);
                   setStateC(true);
-
+                  await sleep(5000);
                   if(existeNivelDos){
                     const nivelesUsuario = await obtenerNivelesUsuario(usuario.id_usuario)
                     
@@ -540,9 +539,7 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
                 ultimo = await patronesdinamicos(patronesJuego, ultimoIndice);
                 puedePresionar = true
 
-                setTimeout(() => {
-                  setState(false);
-                }, 2000);
+                await sleep(2000)
               }
 
             }
@@ -559,9 +556,7 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
                   puedePresionar = false
                   await validarAciertos();
 
-                  setTimeout(() => {
-                    arbol.play("quiet");
-                  }, 2000);
+                  await sleep(2000)
                 } else {
 
                   puedePresionar = false
@@ -571,13 +566,12 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
                   cambiarGanarI(true);
 
                   if (vidas <= 0) {
-                    setTimeout(() => {
-                    console.log("TE MORISTE");
-                  }, 5000);
+
                     
                     juegoKaplay.play("perdido", { volume: 1, speed: 1.5, loop: false });
                     cambiarGanarC(true);
                     setStateC(true);
+                                        await sleep(5000)
                     if (usuario.rol === "ESTUDIANTE") {
                       const obtenerDatosUsuario = async (estudiante_seleccionado: number) => {
                         const datosEstudiante = await fetch(`${baseUrl}/estudiantes/` + estudiante_seleccionado);
@@ -618,9 +612,7 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
                   const ultimoIndice = (ultimo != null) ? ultimo[1] : undefined;
                   ultimo = await patronesdinamicos(patronesJuego, ultimoIndice);
                   puedePresionar = true
-                  setTimeout(() => {
-                    setState(false);
-                  }, 2000);
+                  await sleep(2000)
                 }
 
       
@@ -639,9 +631,7 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
                 puedePresionar = false
                 await validarAciertos();
 
-                setTimeout(() => {
-                  arbol.play("quiet");
-                }, 2000);
+                await sleep(2000)
               } else {
                 puedePresionar = false
                 console.log("Fallaste", ultimo);
@@ -649,13 +639,12 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
                 cambiarGanarI(true);
 
                 if (vidas <= 0) {
-                  setTimeout(() => {
-                  console.log("TE MORISTE");
-                }, 5000);
+                  
                   
                   juegoKaplay.play("perdido", { volume: 1, speed: 1.5, loop: false });
                   cambiarGanarC(true);
                   setStateC(true);
+                  await sleep(5000)
                   if (usuario.rol === "ESTUDIANTE") {
                     const obtenerDatosUsuario = async (estudiante_seleccionado: number) => {
                       const datosEstudiante = await fetch(`${baseUrl}/estudiantes/` + estudiante_seleccionado);
@@ -696,9 +685,7 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
                 const ultimoIndice = (ultimo != null) ? ultimo[1] : undefined;
                 ultimo = await patronesdinamicos(patronesJuego, ultimoIndice);
                 puedePresionar = true
-                setTimeout(() => {
-                  setState(false);
-                }, 2000);
+                await sleep(2000)
               }
 
             }
