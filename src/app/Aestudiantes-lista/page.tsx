@@ -5,7 +5,6 @@ import '../login.css'
 import Header from "../../components/header/header";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
-import { inflateRaw } from "zlib";
 
 interface Estudiante {
     id_usuario: number,

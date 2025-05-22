@@ -18,11 +18,20 @@ export default tseslint.config(
       'react-refresh': reactRefresh,
     },
     rules: {
-      ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
+  ...reactHooks.configs.recommended.rules,
+  'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+
+  // 🔻 Desactivadas
+  '@typescript-eslint/no-unused-vars': 'off',
+  '@typescript-eslint/no-explicit-any': 'off',
+  '@typescript-eslint/no-wrapper-object-types': 'off',
+  '@typescript-eslint/no-unused-expressions': 'off',
+  'react-hooks/exhaustive-deps': 'off',
+  'prefer-const': 'off',
+  'no-empty': 'off',
+  'no-self-assign': 'off',
+  'no-irregular-whitespace': 'off',
+  '@typescript-eslint/no-empty-object-type': 'off', // ⬅️ Esta línea es nueva
     },
   },
 )

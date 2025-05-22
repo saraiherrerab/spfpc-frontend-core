@@ -129,37 +129,6 @@ export default function AdministradoresLista() {
         }
     };
     
-
-    const onEliminar = async (id_administrador: number) => {
-        try {
-            const confirmacion = confirm("¿Estás seguro de que quieres eliminar este administrador?");
-            if (!confirmacion) return;
-
-            console.log("Eliminando");
-
-            const response = await fetch(`${baseUrl}/administradores`, {
-                method: 'DELETE',
-                mode: 'cors',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ id: id_administrador }),
-            });
-
-            const resultadoConsulta = await response.json()
-            console.log(resultadoConsulta)
-
-            const arrayActualizado = administradores_.filter(administrador => administrador.id_usuario !== id_administrador)
-            setAdministradores(arrayActualizado);
-            setAdministradoresFiltrados(arrayActualizado);
-
-        } catch (error) {
-            console.error("Error en la petición:", error);
-        }
-    };
-
-    
-
     const onAgregarAdministrador = async () => {
         const nuevo = { ...nuevoAdministrador };
         
@@ -204,20 +173,6 @@ export default function AdministradoresLista() {
 
     const handleTitleClick = () => {
         window.location.reload();
-    };
-
-    const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchTerm(event.target.value); // Esto ya dispara useEffect que filtra
-    };
-
-    const handleSearchClick = () => {
-        filtrarAdministradores();
-    };
-
-    const mostrarFormularioAgregar = () => {
-        console.log("Mostrar formulario para agregar")
-        setMostrarFormulario(true);
-        setAdministradorEditando(null); // Asegúrate de que no se muestre el formulario de edición al mismo tiempo
     };
 
     return (
