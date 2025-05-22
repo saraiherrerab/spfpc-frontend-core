@@ -535,7 +535,7 @@ export async function Nivel4(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
               }
                                 
               await sleep(1000)
-              /*window.location.href = window.location.href;*/
+              window.location.href = window.location.href;
             }
 
             if(aciertos==1){
