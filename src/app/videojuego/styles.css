@@ -1,6 +1,12 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Jersey+15&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Pixelify+Sans&display=swap');
 
+canvas {
+  position: absolute;
+  z-index: 9999;
+  pointer-events: auto;
+}
+
 .body_juego{
   font-family: "Jersey 15", sans-serif;
 }

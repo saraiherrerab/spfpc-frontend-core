@@ -368,7 +368,7 @@ function CartelC(props:any) {
  
    return (<> 
      
-        <canvas id="game" style={{ width: "100vw", height: "100vh", position:"relative" }} />
+        <canvas id="game" style={{ width: "100vw", height: "100vh"}} />
         
         <Cartel 
             respuesta={cambiarMostrar} 
