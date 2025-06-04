@@ -26,7 +26,22 @@ function sleep(ms: number) {
 }
 
 
-export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, cambiarGanar:any,setStateA:any, cambiarGanarA:any,setState1:any, cambiarGanar1:any,setStateI:any, cambiarGanarI:any,setStateC:any, cambiarGanarC:any, Router:any, usuario: any,jugoNiveles: boolean) {
+export async function Nivel1(
+  juegoKaplay:KAPLAYCtx<{},never>, 
+  setState:any, 
+  cambiarGanar:any,
+  setStateA:any, 
+  cambiarGanarA:any,
+  setState1:any, 
+  cambiarGanar1:any,
+  setStateI:any, 
+  cambiarGanarI:any,
+  setStateC:any, 
+  cambiarGanarC:any, 
+  Router:any, 
+  usuario: any,
+  jugoNiveles: boolean
+) {
   const baseUrl = process.env.NEXT_PUBLIC_API_URL;
   let existeNivelDos = false
   if(jugoNiveles){
@@ -211,6 +226,7 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
 
           cambiarGanar1(true);
           juegoKaplay.play("nivel1", { volume: 1, speed: 1.4, loop: false });
+          
           setState1(true);
 
           const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
@@ -245,8 +261,11 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
             juegoKaplay.area(),
             juegoKaplay.scale(0.20),
             { z: 1},// Asegura que el jugador esté en una capa superior,
+            "circle1"
           ])
   
+          circle1.tag("circle1")
+
           const circle2 = juegoKaplay.add([
           juegoKaplay.pos(juegoKaplay.center().x -30, juegoKaplay.center().y + juegoKaplay.center().y / 2 + juegoKaplay.center().y / 6),
           juegoKaplay.sprite("notas_circulo", {frame: 1}),
@@ -464,7 +483,25 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
           let ultimo = await patronesdinamicos(patronesJuego);
           puedePresionar = true
 
-          circle1.onClick(async () => {
+          // Supongamos que tu juego está en un canvas con id="gameCanvas"
+          const gameCanvas = document.getElementById("game");
+
+          // O si estás usando una librería como Kaboom, puede que te dé el elemento directamente:
+          // const gameCanvas = getGameCanvasElement(); // Función hipotética de tu librería
+
+          if (gameCanvas) {
+              gameCanvas.focus(); // Intenta enfocar el canvas
+
+              // También puedes añadir un listener para enfocarlo de nuevo si se pierde por alguna razón
+              gameCanvas.addEventListener('blur', () => {
+                  console.log("Canvas perdió el foco. Intentando recuperarlo...");
+                  // Puedes intentar enfocarlo de nuevo, pero esto podría ser intrusivo.
+                  gameCanvas.focus(); // ¡Usa con precaución! Podría crear un bucle de foco.
+              });
+          }
+
+          juegoKaplay.onClick("circle1", async () => {
+            console.log("presionando circulo 1")
             if(puedePresionar){
               juegoKaplay.play("A0", { volume: 1, speed: 1.5, loop: false });
 
@@ -705,11 +742,11 @@ export async function Nivel1(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
           }
           
           
-        ).catch(
-              ((error:any) => {
-                console.log("lerolerolero")
-              })
-        )   
+      ).catch(
+            ((error:any) => {
+              console.log("lerolerolero")
+            })
+      )   
     
     
       }) //Fin - Onload()

@@ -487,10 +487,10 @@ import devolverSiguienteNumeroValido from "./utils/generarSiguienteNumeroValido"
                 contextoKaplay.area({shape: new contextoKaplay.Rect(contextoKaplay.vec2(0,0), anchoCelda*0.2, altoCelda*0.2)}),
                 contextoKaplay.anchor("center"),
                 "up",
-                { z: 2 } // Asegura que el jugador esté en una capa superior
+                { z: 1 } // Asegura que el jugador esté en una capa superior
               ]);
 
-              up.tag("player")
+              up.tag("up")
               
  
           }
@@ -510,7 +510,7 @@ import devolverSiguienteNumeroValido from "./utils/generarSiguienteNumeroValido"
                 contextoKaplay.area({shape: new contextoKaplay.Rect(contextoKaplay.vec2(0,0), anchoCelda*0.2, altoCelda*0.2)}),
                 contextoKaplay.anchor("center"),
                 "down",
-                { z: 2 } // Asegura que el jugador esté en una capa superior
+                { z: 1 } // Asegura que el jugador esté en una capa superior
               ]);
 
               down.tag("down")
@@ -536,7 +536,7 @@ import devolverSiguienteNumeroValido from "./utils/generarSiguienteNumeroValido"
                 contextoKaplay.area({shape: new contextoKaplay.Rect(contextoKaplay.vec2(0,0), anchoCelda*0.2, altoCelda*0.2)}),
                 contextoKaplay.anchor("center"),
                 "left",
-                { z: 2 } // Asegura que el jugador esté en una capa superior
+                { z: 1 } // Asegura que el jugador esté en una capa superior
               ]);
 
               left.tag("left")
@@ -561,7 +561,7 @@ import devolverSiguienteNumeroValido from "./utils/generarSiguienteNumeroValido"
                 contextoKaplay.area({shape: new contextoKaplay.Rect(contextoKaplay.vec2(0,0), anchoCelda*0.2, altoCelda*0.2)}),
                 contextoKaplay.anchor("center"),
                 "right",
-                { z: 2 } // Asegura que el jugador esté en una capa superior
+                { z: 1 } // Asegura que el jugador esté en una capa superior
               ]);
 
               right.tag("right")

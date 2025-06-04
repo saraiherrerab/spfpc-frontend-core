@@ -58,6 +58,10 @@ interface Estudiante {
   // Declaración del estado con useState dentro del cuerpo del componente
  
   // Función para manejar el clic del botón
+
+   useEffect( () => {
+    console.log("Activando Cartel")
+   },[])
  
   return (
     <>
@@ -254,6 +258,8 @@ function CartelC(props:any) {
     const [ganarB, cambiarGanarB] = useState(true);
     const [ganarC, cambiarGanarC] = useState(true);
     const Router= useRouter();
+
+    const [variablesControlCarteles, SetVariablesControlCarteles] = useState([false,false,false,false,false])
      // Función para cambiar el estado
     const amoALuis = () => {
       setState(!cambiarMostrar); // Cambia el estado entre true y false
@@ -292,14 +298,6 @@ function CartelC(props:any) {
    useEffect(() => {
     SCREEN_RESOLUTION_X = window.innerWidth 
     SCREEN_RESOLUTION_Y = window.innerHeight 
-
-    const resizeCanvas = () => {
-      const canvas = document.getElementById("game") as HTMLCanvasElement;
-      if (canvas) {
-        canvas.width = window.innerWidth 
-        canvas.height = window.innerHeight 
-      }
-    };
 
     const usuarioGuardado = localStorage.getItem("usuario");
       const informacionUsuario = usuarioGuardado
@@ -350,18 +348,68 @@ function CartelC(props:any) {
        juegoKaplay.loadSound("bien", "./oveja-dialogos/bien.wav");
        
        // Nivel1(juegoKaplay);
-       Panel(juegoKaplay, setState, cambiarGanar,cambiarGanar3,setState3,cambiarGanarA, setStateA,cambiarGanarB, setStateB,
-        cambiarGanarC, setStateC,cambiarGanar1, setState1,cambiarGanarI, setStateI,cambiarGanarIni, setStateIni,cambiarGanar5, setState5, Router,informacionUsuario);
+       Panel(
+        juegoKaplay, 
+        setState, 
+        cambiarGanar,
+        cambiarGanar3,
+        setState3,
+        cambiarGanarA, 
+        setStateA,
+        cambiarGanarB, 
+        setStateB,
+        cambiarGanarC, 
+        setStateC,
+        cambiarGanar1, 
+        setState1,
+        cambiarGanarI, 
+        setStateI,
+        cambiarGanarIni, 
+        setStateIni,
+        cambiarGanar5, 
+        setState5, 
+        Router,
+        SetVariablesControlCarteles, 
+        informacionUsuario);
          
       }
+
+       const gameCanvas = juegoKaplayRef.current.canvas; // Obtén el elemento canvas directamente de la instancia de Kaplay
+
+            if (gameCanvas) {
+                const setFocus = () => {
+                    gameCanvas.focus();
+                    console.log("Foco establecido en el canvas del juego.");
+                };
+
+                // Intenta enfocarlo inmediatamente después de que el canvas esté listo
+                // Esto podría requerir un pequeño retraso si el DOM no está 100% listo al instante
+                setTimeout(setFocus, 50); // Un pequeño retraso para asegurar que el canvas es interactuable
+
+                // Cuando el canvas pierde el foco, intenta recuperarlo.
+                // Esto es CRUCIAL para tu problema.
+                gameCanvas.addEventListener('blur', () => {
+                    console.log("Canvas perdió el foco. Intentando recuperarlo...");
+                    // Usamos un setTimeout para darle al navegador un momento para procesar el blur
+                    // antes de intentar forzar el foco de nuevo.
+                    setTimeout(setFocus, 100);
+                });
+
+                // También re-enfoca cuando la pestaña vuelve a ser visible
+                document.addEventListener("visibilitychange", () => {
+                    if (!document.hidden) {
+                        console.log("Pestaña visible, re-estableciendo foco.");
+                        setFocus();
+                    }
+                });
+
+                // Opcional: Para asegurar que el body puede recibir foco (no siempre necesario para canvas)
+                if (!document.body.hasAttribute("tabindex")) {
+                    document.body.setAttribute("tabindex", "-1");
+                }
+                document.body.focus(); // También intentamos enfocar el body
+            }
    
-    resizeCanvas(); // Ajustar en la carga inicial
- 
-    
-    return () => {
-      window.removeEventListener("resize", resizeCanvas);
-    };
-     
   }, []);
  
 
@@ -369,24 +417,39 @@ function CartelC(props:any) {
    return (<> 
      
         <canvas id="game" style={{ width: "100vw", height: "100vh"}} />
-        
-        <Cartel 
-            respuesta={cambiarMostrar} 
-            cambiarRespuesta={() => amoALuis()} 
-            cambiarGanar={() => cambiarGanar(true)} 
-        />
 
-        <Inicial 
+        { 
+          cambiarMostrarIni && 
+          <Inicial 
             respuesta={cambiarMostrarIni} 
             cambiarRespuesta={() => amoALuisIni()} 
             cambiarGanar={() => cambiarGanarIni(true)} 
         />
+        }
 
-        <CartelIncorrecto 
+
+
+        {
+          cambiarMostrar && 
+          <Cartel 
+            respuesta={cambiarMostrar} 
+            cambiarRespuesta={() => amoALuis()} 
+            cambiarGanar={() => cambiarGanar(true)} 
+          />
+        }
+          
+        
+        
+
+        {
+          cambiarMostrarI &&
+          <CartelIncorrecto 
             respuesta={cambiarMostrarI} 
             cambiarRespuesta={() => amoALuisI()} 
             cambiarGanar={() => cambiarGanarI(true)} 
-        />
+          />
+        }
+
 
         <Cartel3 
             respuesta={cambiarMostrar3} 

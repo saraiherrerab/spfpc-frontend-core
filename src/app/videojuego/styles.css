@@ -1,11 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Jersey+15&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Pixelify+Sans&display=swap');
 
-canvas {
-  position: absolute;
-  z-index: 9999;
-  pointer-events: auto;
-}
 
 .body_juego{
   font-family: "Jersey 15", sans-serif;
@@ -40,29 +35,29 @@ canvas {
     animation: aparecerDesaparecer 6s ease-in-out forwards;
     line-height: 1.6; /* Ajusta este valor según el espaciado que desees */
     width: 30vw; /* Ajusta el ancho según el contenido o un valor fijo */
-    height: 10vw; /* Ajusta el alto según el contenido o un valor fijo *//* 100% de la altura del viewport */
-    
+    height: 5vw; /* Ajusta el alto según el contenido o un valor fijo *//* 100% de la altura del viewport */
+    z-index: 1;
   }
 
     .message-container-inicial{
-    position: absolute;
-    top: 0px; /* Ajusta la posición según sea necesario */
-    left: 50%;
-    transform: translateX(-100%); /* Centrar horizontalmente */
-    color: rgb(62, 50, 1);
-    background-image: url('../../../public/nivel1/cartelinicial.png');  /* Fondo semitransparente */
-    padding:0px;
-    border-radius: 0px;
-    font-size: 35px;
-    font-family: "Jersey 15", sans-serif;
-    font-weight:400;
-    background-repeat: no-repeat;
-    background-size: cover;
-    animation: aparecerDesaparecer 6s ease-in-out forwards;
-    line-height: 1.6; /* Ajusta este valor según el espaciado que desees */
-    width: 50vw; /* Ajusta el ancho según el contenido o un valor fijo */
-    height: 50vw; /* Ajusta el alto según el contenido o un valor fijo *//* 100% de la altura del viewport */
-    
+      position: absolute;
+      top: 0px; /* Ajusta la posición según sea necesario */
+      left: 50%;
+      transform: translateX(-100%); /* Centrar horizontalmente */
+      color: rgb(62, 50, 1);
+      background-image: url('../../../public/nivel1/cartelinicial.png');  /* Fondo semitransparente */
+      padding:0px;
+      border-radius: 0px;
+      font-size: 35px;
+      font-family: "Jersey 15", sans-serif;
+      font-weight:400;
+      background-repeat: no-repeat;
+      background-size: cover;
+      animation: aparecerDesaparecer 6s ease-in-out forwards;
+      line-height: 1.6; /* Ajusta este valor según el espaciado que desees */
+      width: 50vw; /* Ajusta el ancho según el contenido o un valor fijo */
+      height: 100vh; /* Ajusta el alto según el contenido o un valor fijo *//* 100% de la altura del viewport */
+      z-index: 1;
   }
 
   .message-container-incorrecto {
@@ -82,8 +77,8 @@ canvas {
     animation: aparecerDesaparecer 6s ease-in-out forwards;
     line-height: 1.6; /* Ajusta este valor según el espaciado que desees */
     width: 30vw; /* Ajusta el ancho según el contenido o un valor fijo */
-    height: 12vw; /* Ajusta el alto según el contenido o un valor fijo *//* 100% de la altura del viewport */
-    
+    height: 12vh; /* Ajusta el alto según el contenido o un valor fijo *//* 100% de la altura del viewport */
+    z-index: 1;
   }
 
   .message-container-nivel1 {
@@ -104,6 +99,7 @@ canvas {
      /* Para que empiece desde la parte izquierda */
     width: 50vw; /* Ajusta el ancho según el contenido o un valor fijo */
     height: 30vw; /* Ajusta el alto según el contenido o un valor fijo *//* 100% de la altura del viewport */
+    z-index: 1;
   }
 
    .message-container5 {
@@ -123,7 +119,8 @@ canvas {
     animation: aparecerDesaparecer 6s ease-in-out forwards;
      /* Para que empiece desde la parte izquierda */
     width: 50vw; /* Ajusta el ancho según el contenido o un valor fijo */
-    height: 30vw; /* Ajusta el alto según el contenido o un valor fijo *//* 100% de la altura del viewport */
+    height: 30vh; /* Ajusta el alto según el contenido o un valor fijo *//* 100% de la altura del viewport */
+    z-index: 1;
   }
   .message-containerA {
     position: absolute;
@@ -142,7 +139,8 @@ canvas {
     animation: aparecerDesaparecer 6s ease-in-out forwards;
      /* Para que empiece desde la parte izquierda */
     width: 50vw; /* Ajusta el ancho según el contenido o un valor fijo */
-    height: 30vw; /* Ajusta el alto según el contenido o un valor fijo *//* 100% de la altura del viewport */
+    height: 30vh; /* Ajusta el alto según el contenido o un valor fijo *//* 100% de la altura del viewport */
+    z-index: 1;
   }
 
   .message-containerC {
@@ -162,7 +160,8 @@ canvas {
     animation: aparecerDesaparecer 6s ease-in-out forwards;
      /* Para que empiece desde la parte izquierda */
     width: 50vw; /* Ajusta el ancho según el contenido o un valor fijo */
-    height: 30vw; /* Ajusta el alto según el contenido o un valor fijo *//* 100% de la altura del viewport */
+    height: 30vh; /* Ajusta el alto según el contenido o un valor fijo *//* 100% de la altura del viewport */
+    z-index: 1;
   }
 
   .message-containerB {
@@ -182,7 +181,8 @@ canvas {
     animation: aparecerDesaparecer 6s ease-in-out forwards;
      /* Para que empiece desde la parte izquierda */
     width: 50vw; /* Ajusta el ancho según el contenido o un valor fijo */
-    height: 30vw; /* Ajusta el alto según el contenido o un valor fijo *//* 100% de la altura del viewport */
+    height: 30vh; /* Ajusta el alto según el contenido o un valor fijo *//* 100% de la altura del viewport */
+    z-index: 1;
   }
   .message-container3 {
     position: absolute;
@@ -201,7 +201,8 @@ canvas {
     animation: aparecerDesaparecer 6s ease-in-out forwards;
      /* Para que empiece desde la parte izquierda */
     width: 50vw; /* Ajusta el ancho según el contenido o un valor fijo */
-    height: 30vw; /* Ajusta el alto según el contenido o un valor fijo *//* 100% de la altura del viewport */
+    height: 30vh; /* Ajusta el alto según el contenido o un valor fijo *//* 100% de la altura del viewport */
+    z-index: 1;
   }
   @keyframes aparecerDesaparecer {
     0% { opacity: 0; transform: translateX(-50%) scale(0.8); }
@@ -244,6 +245,7 @@ p {
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
   opacity: 0;
+  z-index: 1;
 }
 
   .Bcontainer{

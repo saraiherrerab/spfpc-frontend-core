@@ -197,7 +197,7 @@ export async function Nivel2(juegoKaplay:KAPLAYCtx<{},never>, setStateB:any, cam
                   },
                 ]
               ).then(
-                (resultado: any) => {
+                async (resultado: any) => {
 
                   async function terminarJuego () {
                     window.location.href = window.location.href
@@ -278,13 +278,79 @@ export async function Nivel2(juegoKaplay:KAPLAYCtx<{},never>, setStateB:any, cam
                         await terminarJuego();
                       };        
                   }
+
+                  function tryMovePlayer(targetX: number, targetY: number, anim: string) {
+                    const currentX = player.pos.x;
+                    const currentY = player.pos.y;
+
+                    // Mueve el jugador a la posición tentativa (solo para la verificación de colisión)
+                    // Usamos player.pos directamente para una verificación inmediata,
+                    // si quieres animación, moveTo se encargará de ello después de la validación.
+                    player.pos.x = targetX;
+                    player.pos.y = targetY;
+
+                    let movementValid = true;
+
+                    // Verificar colisiones con objetos de colisión
+                    for (const colision of colisiones) {
+                        if (player.isColliding(colision)) {
+                            movementValid = false;
+                            break;
+                        }
+                    }
+
+                    // Verificar colisiones con enemigos
+                    if (movementValid) { // Solo si no ha colisionado ya
+                        for (const enemigo of enemigos) {
+                            if (player.isColliding(enemigo)) {
+                                movementValid = false;
+                                // En este caso, el jugador no se mueve, pero igual pierde vida.
+                                lives--;
+                                validarVidas(); // Actualiza las vidas
+                                break;
+                            }
+                        }
+                    }
+
+                    // Verificar colisiones con zonas de golpe (pueden ser triggers o bloqueadores)
+                    // Si `zonasGolpe` debe bloquear, se maneja como colisiones.
+                    // Si solo debe disparar un evento sin bloquear, la lógica es diferente.
+                    // Basado en tu código original, parece que también bloquean el movimiento.
+                    if (movementValid) {
+                        for (const zona of zonasGolpe) {
+                            if (player.isColliding(zona)) {
+                                movementValid = false;
+                                break;
+                            }
+                        }
+                    }
+                
+                    // Si el movimiento es válido, actualiza la posición final y el contador
+                    if (movementValid) {
+                        posicionAnteriorXGlobal = currentX; // Guarda la posición actual como la "anterior válida"
+                        posicionAnteriorYGlobal = currentY;
+                        player.moveTo(targetX, targetY); // Ejecuta el movimiento animado si Kaplay lo maneja así
+                        player.play(anim);
+                        contadorMovimientos++;
+                        console.log("MOVIMIENTO VÁLIDO - CONTADOR ", contadorMovimientos);
+                    } else {
+                        // Si el movimiento no es válido, regresa el jugador a su posición original
+                        player.pos.x = currentX;
+                        player.pos.y = currentY; // Aseguramos que el jugador se quede donde estaba
+                        console.log("MOVIMIENTO INVÁLIDO - CONTADOR ", contadorMovimientos);
+                    }
+                  }
                   
                   cambiarGanarB(true);
+
                   juegoKaplay.play("nivel2", { volume: 1, speed: 1, loop: false });
                   setStateB(true);
-                  setTimeout(() => {
-                    setStateB(false);
-                  }, 10000); 
+
+                  const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+                  await wait (1000)
+                  setStateB(false);
+
 
                   console.log("Resultado de generar nivel 2")
                   console.log(juegoKaplay.get("*"))
@@ -300,6 +366,12 @@ export async function Nivel2(juegoKaplay:KAPLAYCtx<{},never>, setStateB:any, cam
                   const down = juegoKaplay.get("down")[0]
                   const left = juegoKaplay.get("left")[0]
                   const right = juegoKaplay.get("right")[0]
+
+                  console.log(up)
+                  console.log(down)
+                  console.log(left)
+                  console.log(right)
+
                   const heart1 = juegoKaplay.get("heart1")[0]
                   const heart2 = juegoKaplay.get("heart2")[0]
                   const heart3 = juegoKaplay.get("heart3")[0]
@@ -476,199 +548,300 @@ export async function Nivel2(juegoKaplay:KAPLAYCtx<{},never>, setStateB:any, cam
 
                   const velocidad = 64;
 
-                
+                  // --- Evento para la tecla 'W' (Arriba) ---
+                  juegoKaplay.onClick("up", () => {
+                      console.log("Presionada: W (ARRIBA)");
 
-                  // Movimiento con clic
-                  up.onClick(() => {
-                    console.log("PRESIONANDO FLECHA UP")
-                    const objetoPosicionAnterior = {
-                      x: player.pos.x,
-                      y: player.pos.y
-                    }
+                      movimientoValido = true
 
-                    console.log("Posición antes de presionar la tecla ", objetoPosicionAnterior)
+                      console.log(player.pos.x)
+                      console.log(player.pos.y)
 
-                    posicionAnteriorXGlobal = player.pos.x
-                    posicionAnteriorYGlobal = player.pos.y
+                      posicionAnteriorXGlobal = player.pos.x
+                      posicionAnteriorYGlobal = player.pos.y
 
+                      player.moveTo(posicionAnteriorXGlobal,posicionAnteriorYGlobal - TILED_HEIGHT);
+                      player.play("down");
 
-                    player.moveTo(posicionAnteriorXGlobal,posicionAnteriorYGlobal - TILED_HEIGHT);
-                    player.play("up");
-                    
-                    colisiones.forEach( (colision: GameObj<any>) => {
-                    
-                      colision.onCollide("player", (jugador: any) => {
-
-                        player.pos.x = posicionAnteriorXGlobal
-                        player.pos.y = posicionAnteriorYGlobal
-
-                        movimientoValido = false
-                        
-                      })
-
-                    })
-
-                    zonasGolpe.forEach( (zona: GameObj<any>) => {
-                    
-                      zona.onCollide("player", async (jugador: any) => {
-
-                        player.pos.x = posicionAnteriorXGlobal
-                        player.pos.y = posicionAnteriorYGlobal
-
-                      })
-
-                    })
-
-                    if(movimientoValido){
-                      contadorMovimientos = contadorMovimientos + 1;
-                      console.log("MOVIMIENTO VALIDO - CONTADOR ", contadorMovimientos)
-                    }else{
-                      console.log("MOVIMIENTO INVALIDO - CONTADOR ", contadorMovimientos)
-                      movimientoValido = true;
-                    }
-                    
-                    
-                  });
-                  down.onClick(() =>{
-
-                    console.log(player.pos.x)
-                    console.log(player.pos.y)
-
-                    posicionAnteriorXGlobal = player.pos.x
-                    posicionAnteriorYGlobal = player.pos.y
-
-                    player.moveTo(posicionAnteriorXGlobal,posicionAnteriorYGlobal + TILED_HEIGHT);
-                    player.play("down");
-
-                    colisiones.forEach( (colision: GameObj<any>) => {
-                    
-                      colision.onCollide("player", (jugador: any) => {
-                        
-                        player.pos.x = posicionAnteriorXGlobal
-                        player.pos.y = posicionAnteriorYGlobal
-
-                        movimientoValido = false
-
-                      })
-
-                    })
-
-                    zonasGolpe.forEach( (zona: GameObj<any>) => {
-                    
-                      zona.onCollide("player", async (jugador: any) => {
-
-                        player.pos.x = posicionAnteriorXGlobal
-                        player.pos.y = posicionAnteriorYGlobal
-
-                      })
-
-                    })
-
-                    if(movimientoValido){
-                      contadorMovimientos = contadorMovimientos + 1;
-                      console.log("MOVIMIENTO VALIDO - CONTADOR ", contadorMovimientos)
-                    }else{
-                      console.log("MOVIMIENTO INVALIDO - CONTADOR ", contadorMovimientos)
-                      movimientoValido = true;
-                    }
-
-                  });
-                  left.onClick(() => {
-                    console.log(player.pos.x)
-                    console.log(player.pos.y)
-
-                    const posicionAnteriorX = player.pos.x
-                    const posicionAnteriorY = player.pos.y
-
-                    player.moveTo(posicionAnteriorX - TILED_WIDTH,posicionAnteriorY);
-                    player.play("left");
-
-                    colisiones.forEach( (colision: GameObj<any>) => {
-                    
-                      colision.onCollide("player", (jugador: any) => {
-                        player.pos.x = posicionAnteriorX
-                        player.pos.y = posicionAnteriorY
-
-                        movimientoValido = false;
-                      })
-
-                    })
-
-                    enemigos.forEach( (enemigo: GameObj<any>) => {
-                    
-                      enemigo.onCollide("player", (jugador: any) => {
-                        player.pos.x = posicionAnteriorX
-                        player.pos.y = posicionAnteriorY
-
-                        movimientoValido = false;
-                      })
-
-                    })
-
-                    zonasGolpe.forEach( (zona: GameObj<any>) => {
-                    
-                        zona.onCollide("player", async (jugador: any) => {
-
-                          await sleep(100)
+                      colisiones.forEach( (colision: GameObj<any>) => {
+                      
+                        colision.onCollide("player", (jugador: any) => {
                           
-                          player.pos.x = posicionAnteriorX
-                          player.pos.y = posicionAnteriorY
+                          player.pos.x = posicionAnteriorXGlobal
+                          player.pos.y = posicionAnteriorYGlobal
 
-                          movimientoValido = false;
+                          movimientoValido = false
+
                         })
 
-                    })
+                      })
 
-                    if(movimientoValido){
-                      contadorMovimientos = contadorMovimientos + 1;
-                      console.log("MOVIMIENTO VALIDO - CONTADOR ", contadorMovimientos)
-                    }else{
-                      console.log("MOVIMIENTO INVALIDO - CONTADOR ", contadorMovimientos)
-                      movimientoValido = false;
-                    }
+                      zonasGolpe.forEach( (zona: GameObj<any>) => {
+                      
+                        zona.onCollide("player", async (jugador: any) => {
 
-                  });
-                  right.onClick(() =>{
+                          player.pos.x = posicionAnteriorXGlobal
+                          player.pos.y = posicionAnteriorYGlobal
 
-                    posicionAnteriorXGlobal = player.pos.x
-                    posicionAnteriorYGlobal = player.pos.y
-
-                    player.moveTo(posicionAnteriorXGlobal + TILED_WIDTH,posicionAnteriorYGlobal);
-                    player.play("right");
-
-                    colisiones.forEach( (colision: GameObj<any>) => {
-                    
-                      colision.onCollide("player", (jugador: any) => {
-                        player.pos.x = posicionAnteriorXGlobal
-                        player.pos.y = posicionAnteriorYGlobal
-
-                        movimientoValido = false
+                        })
 
                       })
 
-                    })
+                      if(movimientoValido){
+                        contadorMovimientos = contadorMovimientos + 1;
+                        console.log("MOVIMIENTO VALIDO - CONTADOR ", contadorMovimientos)
+                      }else{
+                        console.log("MOVIMIENTO INVALIDO - CONTADOR ", contadorMovimientos)
+                        movimientoValido = true;
+                      }
+                  });
 
-                    zonasGolpe.forEach( (zona: GameObj<any>) => {
-                    
-                      zona.onCollide("player", async (jugador: any) => {
+                  // --- Evento para la tecla 'S' (Abajo) ---
+                  juegoKaplay.onClick("down", () => {
+                      console.log("Presionada: S (ABAJO)");
+                      movimientoValido = true
 
-                        player.pos.x = posicionAnteriorXGlobal
-                        player.pos.y = posicionAnteriorYGlobal
+                      console.log(player.pos.x)
+                      console.log(player.pos.y)
+
+                      posicionAnteriorXGlobal = player.pos.x
+                      posicionAnteriorYGlobal = player.pos.y
+
+                      player.moveTo(posicionAnteriorXGlobal,posicionAnteriorYGlobal + TILED_HEIGHT);
+                      player.play("down");
+
+                      colisiones.forEach( (colision: GameObj<any>) => {
+                      
+                        colision.onCollide("player", (jugador: any) => {
+                          
+                          player.pos.x = posicionAnteriorXGlobal
+                          player.pos.y = posicionAnteriorYGlobal
+
+                          movimientoValido = false
+
+                        })
 
                       })
 
-                    })
+                      zonasGolpe.forEach( (zona: GameObj<any>) => {
+                      
+                        zona.onCollide("player", async (jugador: any) => {
 
-                    if(movimientoValido){
-                      contadorMovimientos = contadorMovimientos + 1;
-                      console.log("MOVIMIENTO VALIDO - CONTADOR ", contadorMovimientos)
-                    }else{
-                      console.log("MOVIMIENTO INVALIDO - CONTADOR ", contadorMovimientos)
-                      movimientoValido = true;
-                    }
-                    
+                          player.pos.x = posicionAnteriorXGlobal
+                          player.pos.y = posicionAnteriorYGlobal
+
+                        })
+
+                      })
+
+                      if(movimientoValido){
+                        contadorMovimientos = contadorMovimientos + 1;
+                        console.log("MOVIMIENTO VALIDO - CONTADOR ", contadorMovimientos)
+                      }else{
+                        console.log("MOVIMIENTO INVALIDO - CONTADOR ", contadorMovimientos)
+                        movimientoValido = true;
+                      }
                   });
-                  
+
+                  // --- Evento para la tecla 'A' (Izquierda) ---
+                  juegoKaplay.onClick("left", () => {
+                      console.log("Presionada: A (IZQUIERDA)");
+                      movimientoValido = true
+
+                      console.log(player.pos.x)
+                      console.log(player.pos.y)
+
+                      posicionAnteriorXGlobal = player.pos.x
+                      posicionAnteriorYGlobal = player.pos.y
+
+                      player.moveTo(posicionAnteriorXGlobal - TILED_WIDTH,posicionAnteriorYGlobal);
+                      player.play("left");
+
+                      colisiones.forEach( (colision: GameObj<any>) => {
+                      
+                        colision.onCollide("player", (jugador: any) => {
+                          
+                          player.pos.x = posicionAnteriorXGlobal
+                          player.pos.y = posicionAnteriorYGlobal
+
+                          movimientoValido = false
+
+                        })
+
+                      })
+
+                      zonasGolpe.forEach( (zona: GameObj<any>) => {
+                      
+                        zona.onCollide("player", async (jugador: any) => {
+
+                          player.pos.x = posicionAnteriorXGlobal
+                          player.pos.y = posicionAnteriorYGlobal
+
+                        })
+
+                      })
+
+                      if(movimientoValido){
+                        contadorMovimientos = contadorMovimientos + 1;
+                        console.log("MOVIMIENTO VALIDO - CONTADOR ", contadorMovimientos)
+                      }else{
+                        console.log("MOVIMIENTO INVALIDO - CONTADOR ", contadorMovimientos)
+                        movimientoValido = true;
+                      }
+                  });
+                  // --- Evento para la tecla 'D' (Derecha) ---
+                  juegoKaplay.onClick("right", () => {
+                      console.log("Presionada: D (DERECHA)");
+                      tryMovePlayer(player.pos.x + TILED_WIDTH, player.pos.y, "right");
+                  });
+
+                  // --- Evento para la tecla 'W' (Arriba) ---
+                  juegoKaplay.onKeyPress("w", () => {
+                      console.log("Presionada: W (ARRIBA)");
+
+                      movimientoValido = true
+
+                      console.log(player.pos.x)
+                      console.log(player.pos.y)
+
+                      posicionAnteriorXGlobal = player.pos.x
+                      posicionAnteriorYGlobal = player.pos.y
+
+                      player.moveTo(posicionAnteriorXGlobal,posicionAnteriorYGlobal - TILED_HEIGHT);
+                      player.play("down");
+
+                      colisiones.forEach( (colision: GameObj<any>) => {
+                      
+                        colision.onCollide("player", (jugador: any) => {
+                          
+                          player.pos.x = posicionAnteriorXGlobal
+                          player.pos.y = posicionAnteriorYGlobal
+
+                          movimientoValido = false
+
+                        })
+
+                      })
+
+                      zonasGolpe.forEach( (zona: GameObj<any>) => {
+                      
+                        zona.onCollide("player", async (jugador: any) => {
+
+                          player.pos.x = posicionAnteriorXGlobal
+                          player.pos.y = posicionAnteriorYGlobal
+
+                        })
+
+                      })
+
+                      if(movimientoValido){
+                        contadorMovimientos = contadorMovimientos + 1;
+                        console.log("MOVIMIENTO VALIDO - CONTADOR ", contadorMovimientos)
+                      }else{
+                        console.log("MOVIMIENTO INVALIDO - CONTADOR ", contadorMovimientos)
+                        movimientoValido = true;
+                      }
+                  });
+
+                  // --- Evento para la tecla 'S' (Abajo) ---
+                  juegoKaplay.onKeyPress("s", () => {
+                      console.log("Presionada: S (ABAJO)");
+                      movimientoValido = true
+
+                      console.log(player.pos.x)
+                      console.log(player.pos.y)
+
+                      posicionAnteriorXGlobal = player.pos.x
+                      posicionAnteriorYGlobal = player.pos.y
+
+                      player.moveTo(posicionAnteriorXGlobal,posicionAnteriorYGlobal + TILED_HEIGHT);
+                      player.play("down");
+
+                      colisiones.forEach( (colision: GameObj<any>) => {
+                      
+                        colision.onCollide("player", (jugador: any) => {
+                          
+                          player.pos.x = posicionAnteriorXGlobal
+                          player.pos.y = posicionAnteriorYGlobal
+
+                          movimientoValido = false
+
+                        })
+
+                      })
+
+                      zonasGolpe.forEach( (zona: GameObj<any>) => {
+                      
+                        zona.onCollide("player", async (jugador: any) => {
+
+                          player.pos.x = posicionAnteriorXGlobal
+                          player.pos.y = posicionAnteriorYGlobal
+
+                        })
+
+                      })
+
+                      if(movimientoValido){
+                        contadorMovimientos = contadorMovimientos + 1;
+                        console.log("MOVIMIENTO VALIDO - CONTADOR ", contadorMovimientos)
+                      }else{
+                        console.log("MOVIMIENTO INVALIDO - CONTADOR ", contadorMovimientos)
+                        movimientoValido = true;
+                      }
+                  });
+
+                  // --- Evento para la tecla 'A' (Izquierda) ---
+                  juegoKaplay.onKeyPress("a", () => {
+                      console.log("Presionada: A (IZQUIERDA)");
+                      movimientoValido = true
+
+                      console.log(player.pos.x)
+                      console.log(player.pos.y)
+
+                      posicionAnteriorXGlobal = player.pos.x
+                      posicionAnteriorYGlobal = player.pos.y
+
+                      player.moveTo(posicionAnteriorXGlobal - TILED_WIDTH,posicionAnteriorYGlobal);
+                      player.play("left");
+
+                      colisiones.forEach( (colision: GameObj<any>) => {
+                      
+                        colision.onCollide("player", (jugador: any) => {
+                          
+                          player.pos.x = posicionAnteriorXGlobal
+                          player.pos.y = posicionAnteriorYGlobal
+
+                          movimientoValido = false
+
+                        })
+
+                      })
+
+                      zonasGolpe.forEach( (zona: GameObj<any>) => {
+                      
+                        zona.onCollide("player", async (jugador: any) => {
+
+                          player.pos.x = posicionAnteriorXGlobal
+                          player.pos.y = posicionAnteriorYGlobal
+
+                        })
+
+                      })
+
+                      if(movimientoValido){
+                        contadorMovimientos = contadorMovimientos + 1;
+                        console.log("MOVIMIENTO VALIDO - CONTADOR ", contadorMovimientos)
+                      }else{
+                        console.log("MOVIMIENTO INVALIDO - CONTADOR ", contadorMovimientos)
+                        movimientoValido = true;
+                      }
+                  });
+                  // --- Evento para la tecla 'D' (Derecha) ---
+                  juegoKaplay.onKeyPress("d", () => {
+                      console.log("Presionada: D (DERECHA)");
+                      tryMovePlayer(player.pos.x + TILED_WIDTH, player.pos.y, "right");
+                  });
+                
                 
               }
               ).catch(

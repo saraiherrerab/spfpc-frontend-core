@@ -8,8 +8,30 @@ import {Nivel5} from "./5thLevel";
 import sleep from "./functions/sleep";
 import obtenerNivelesUsuario from "./functions/obtenerNivelesUsuario";
 
-export async function Panel(juegoKaplay:KAPLAYCtx<{},never>, setState:any, cambiarGanar:any,cambiarGanar3:any,setState3:any, cambiarGanarA:any, setStateA:any, 
-  cambiarGanarB:any, setStateB:any,cambiarGanarC:any, setStateC:any,cambiarGanar1:any,setState1:any, setStateI:any,cambiarGanarI:any, setStateIni:any,cambiarGanarIni:any, setState5:any,cambiarGanar5:any,     Router:any, usuario?: any) {
+export async function Panel(
+  juegoKaplay:KAPLAYCtx<{},never>, 
+  setState:any, 
+  cambiarGanar:any,
+  cambiarGanar3:any,
+  setState3:any, 
+  cambiarGanarA:any, 
+  setStateA:any, 
+  cambiarGanarB:any, 
+  setStateB:any,
+  cambiarGanarC:any, 
+  setStateC:any,
+  cambiarGanar1:any,
+  setState1:any, 
+  setStateI:any,
+  cambiarGanarI:any, 
+  setStateIni:any,
+  cambiarGanarIni:any, 
+  setState5:any,
+  cambiarGanar5:any,     
+  Router:any, 
+  setVariablesControlCarteles: any, 
+  usuario?: any, 
+) {
     // Referencia persistente para almacenar la instancia de Kaplay
     const SCREEN_RESOLUTION_X: number = window.innerWidth 
     const SCREEN_RESOLUTION_Y: number = window.innerHeight 
@@ -107,57 +129,56 @@ export async function Panel(juegoKaplay:KAPLAYCtx<{},never>, setState:any, cambi
     },
   });
 
-    juegoKaplay.loadSprite("hongo", "sprites/deco/hongo.png", {
-      sliceX: 1,
-      sliceY: 1,
-    });
+  juegoKaplay.loadSprite("hongo", "sprites/deco/hongo.png", {
+    sliceX: 1,
+    sliceY: 1,
+  });
 
-    juegoKaplay.loadSprite("torre1", "sprites/buildings/Tower_Yellow.png", {
-      sliceX: 1,
-      sliceY: 1,
-    });
+  juegoKaplay.loadSprite("torre1", "sprites/buildings/Tower_Yellow.png", {
+    sliceX: 1,
+    sliceY: 1,
+  });
 
-    juegoKaplay.loadSprite("casa", "sprites/buildings/House_Yellow.png", {
-      sliceX: 1,
-      sliceY: 1,
-    });
+  juegoKaplay.loadSprite("casa", "sprites/buildings/House_Yellow.png", {
+    sliceX: 1,
+    sliceY: 1,
+  });
 
-    juegoKaplay.loadSprite("casa1", "sprites/buildings/House_Blue.png", {
-      sliceX: 1,
-      sliceY: 1,
-    });
+  juegoKaplay.loadSprite("casa1", "sprites/buildings/House_Blue.png", {
+    sliceX: 1,
+    sliceY: 1,
+  });
 
-    // Cargar sprites adicionales
-    ["up", "down", "left", "right"].forEach((dir) => {
-      juegoKaplay.loadSprite(dir, `sprites/${dir}-arrow.png`);
-    });
+  // Cargar sprites adicionales
+  ["up", "down", "left", "right"].forEach((dir) => {
+    juegoKaplay.loadSprite(dir, `sprites/${dir}-arrow.png`);
+  });
 
-    juegoKaplay.loadSprite("redbox", "red-border-box.png");
+  juegoKaplay.loadSprite("redbox", "red-border-box.png");
 
-    if(usuario.id_usuario !== 0){
+  if(usuario.id_usuario !== 0){
 
-      const nivelesJugados = await obtenerNivelesUsuario(usuario.id_usuario)
+    const nivelesJugados = await obtenerNivelesUsuario(usuario.id_usuario)
 
-      nivelesUsuario = [...nivelesJugados]
-      console.log(nivelesUsuario)
+    nivelesUsuario = [...nivelesJugados]
+    console.log(nivelesUsuario)
 
-      if(nivelesUsuario.length > 0 ){
-        jugoNiveles = true
-      }
-
-      console.log("jugoNiveles: ", jugoNiveles )
-
-      console.log(usuario)
-      if(usuario.rol === "ESTUDIANTE"){
-        console.log("ESTUDIANTE DETECTADO")
-        /* Aqui valido que niveles a pasado */
-        
-      }else{
-        console.log("NO ES ESTUDIANTE")
-      }
+    if(nivelesUsuario.length > 0 ){
+      jugoNiveles = true
     }
 
-    
+    console.log("jugoNiveles: ", jugoNiveles )
+
+    console.log(usuario)
+    if(usuario.rol === "ESTUDIANTE"){
+      console.log("ESTUDIANTE DETECTADO")
+      /* Aqui valido que niveles a pasado */
+      
+    }else{
+      console.log("NO ES ESTUDIANTE")
+    }
+  }
+
     juegoKaplay.onLoad(() => {
         //Practicando aqui
       generarEsquemaMapa(
@@ -207,7 +228,7 @@ export async function Panel(juegoKaplay:KAPLAYCtx<{},never>, setState:any, cambi
       .then(
         async (resultado: any) => {
 
-            cambiarGanarIni(true);
+            cambiarGanarIni(true)
             
             setStateIni(true);
         
@@ -303,6 +324,22 @@ export async function Panel(juegoKaplay:KAPLAYCtx<{},never>, setState:any, cambi
             juegoKaplay.destroy(castillo);
             juegoKaplay.destroy(player);
             juegoKaplay.destroyAll("*");
+            // 1. Obtener todos los elementos div de la página
+            // document.querySelectorAll('div') devuelve una NodeListOf<HTMLDivElement>
+            const allDivs: NodeListOf<HTMLDivElement> = document.querySelectorAll('div');
+
+            // 2. Iterar sobre la lista y eliminar cada div
+            // Es importante convertir la NodeList a un Array o iterar hacia atrás
+            // porque si eliminas elementos mientras iteras hacia adelante, la lista se modifica
+            // y puedes saltarte elementos o causar errores.
+
+            // Opción A: Convertir a Array y luego iterar (más segura y a menudo más legible)
+            Array.from(allDivs).forEach((divElement: HTMLDivElement) => {
+                // Asegúrate de que el div tiene un padre antes de intentar eliminarlo
+                if (divElement.parentNode) {
+                    divElement.parentNode.removeChild(divElement);
+                }
+            });
             Nivel3(juegoKaplay, setState3, cambiarGanar3,cambiarGanarA, setStateA,cambiarGanarC, setStateC, Router,usuario,jugoNiveles);
             // We pass the component id for remove it.
           });
@@ -312,7 +349,37 @@ export async function Panel(juegoKaplay:KAPLAYCtx<{},never>, setState:any, cambi
             juegoKaplay.destroy(castillo);
             juegoKaplay.destroy(player);
             juegoKaplay.destroyAll("*");
-            Nivel1(juegoKaplay, setState, cambiarGanar, setStateA, cambiarGanarA,setState1, cambiarGanar1,setStateI, cambiarGanarI,setStateC, cambiarGanarC, Router,usuario,jugoNiveles);
+            // 1. Obtener todos los elementos div de la página
+            // document.querySelectorAll('div') devuelve una NodeListOf<HTMLDivElement>
+            const allDivs: NodeListOf<HTMLDivElement> = document.querySelectorAll('div');
+
+            // 2. Iterar sobre la lista y eliminar cada div
+            // Es importante convertir la NodeList a un Array o iterar hacia atrás
+            // porque si eliminas elementos mientras iteras hacia adelante, la lista se modifica
+            // y puedes saltarte elementos o causar errores.
+
+            // Opción A: Convertir a Array y luego iterar (más segura y a menudo más legible)
+            Array.from(allDivs).forEach((divElement: HTMLDivElement) => {
+                // Asegúrate de que el div tiene un padre antes de intentar eliminarlo
+                if (divElement.parentNode) {
+                    divElement.parentNode.removeChild(divElement);
+                }
+            });
+          Nivel1(
+              juegoKaplay, 
+              setState, 
+              cambiarGanar, 
+              setStateA, 
+              cambiarGanarA,
+              setState1, 
+              cambiarGanar1,
+              setStateI, 
+              cambiarGanarI,
+              setStateC, 
+              cambiarGanarC, 
+              Router,
+              usuario,
+              jugoNiveles);
             // We pass the component id for remove it.
           });
 
@@ -321,6 +388,22 @@ export async function Panel(juegoKaplay:KAPLAYCtx<{},never>, setState:any, cambi
             juegoKaplay.destroy(castillo);
             juegoKaplay.destroy(player);
             juegoKaplay.destroyAll("*");
+            // 1. Obtener todos los elementos div de la página
+            // document.querySelectorAll('div') devuelve una NodeListOf<HTMLDivElement>
+            const allDivs: NodeListOf<HTMLDivElement> = document.querySelectorAll('div');
+
+            // 2. Iterar sobre la lista y eliminar cada div
+            // Es importante convertir la NodeList a un Array o iterar hacia atrás
+            // porque si eliminas elementos mientras iteras hacia adelante, la lista se modifica
+            // y puedes saltarte elementos o causar errores.
+
+            // Opción A: Convertir a Array y luego iterar (más segura y a menudo más legible)
+            Array.from(allDivs).forEach((divElement: HTMLDivElement) => {
+                // Asegúrate de que el div tiene un padre antes de intentar eliminarlo
+                if (divElement.parentNode) {
+                    divElement.parentNode.removeChild(divElement);
+                }
+            });
             Nivel2(juegoKaplay, setStateB, cambiarGanarB, setStateA, cambiarGanarA,cambiarGanarC, setStateC, Router,usuario,jugoNiveles);
             // We pass the component id for remove it.
           });
@@ -330,6 +413,22 @@ export async function Panel(juegoKaplay:KAPLAYCtx<{},never>, setState:any, cambi
             juegoKaplay.destroy(castillo);
             juegoKaplay.destroy(player);
             juegoKaplay.destroyAll("*");
+            // 1. Obtener todos los elementos div de la página
+            // document.querySelectorAll('div') devuelve una NodeListOf<HTMLDivElement>
+            const allDivs: NodeListOf<HTMLDivElement> = document.querySelectorAll('div');
+
+            // 2. Iterar sobre la lista y eliminar cada div
+            // Es importante convertir la NodeList a un Array o iterar hacia atrás
+            // porque si eliminas elementos mientras iteras hacia adelante, la lista se modifica
+            // y puedes saltarte elementos o causar errores.
+
+            // Opción A: Convertir a Array y luego iterar (más segura y a menudo más legible)
+            Array.from(allDivs).forEach((divElement: HTMLDivElement) => {
+                // Asegúrate de que el div tiene un padre antes de intentar eliminarlo
+                if (divElement.parentNode) {
+                    divElement.parentNode.removeChild(divElement);
+                }
+            });
             Nivel4(juegoKaplay, setState, cambiarGanar, setStateA, cambiarGanarA,setState1, cambiarGanar1,setStateC, cambiarGanarC,setStateI, cambiarGanarI, Router,usuario,jugoNiveles);
             // We pass the component id for remove it.
           });
@@ -339,6 +438,22 @@ export async function Panel(juegoKaplay:KAPLAYCtx<{},never>, setState:any, cambi
             juegoKaplay.destroy(castillo);
             juegoKaplay.destroy(player);
             juegoKaplay.destroyAll("*");
+            // 1. Obtener todos los elementos div de la página
+            // document.querySelectorAll('div') devuelve una NodeListOf<HTMLDivElement>
+            const allDivs: NodeListOf<HTMLDivElement> = document.querySelectorAll('div');
+
+            // 2. Iterar sobre la lista y eliminar cada div
+            // Es importante convertir la NodeList a un Array o iterar hacia atrás
+            // porque si eliminas elementos mientras iteras hacia adelante, la lista se modifica
+            // y puedes saltarte elementos o causar errores.
+
+            // Opción A: Convertir a Array y luego iterar (más segura y a menudo más legible)
+            Array.from(allDivs).forEach((divElement: HTMLDivElement) => {
+                // Asegúrate de que el div tiene un padre antes de intentar eliminarlo
+                if (divElement.parentNode) {
+                    divElement.parentNode.removeChild(divElement);
+                }
+            });
             Nivel5(juegoKaplay, setState5, cambiarGanar5, setStateA, cambiarGanarA,setStateC, cambiarGanarC, Router,usuario,jugoNiveles);
             // We pass the component id for remove it.
           });
