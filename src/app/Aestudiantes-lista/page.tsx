@@ -789,7 +789,7 @@ export default function EstudiantesLista() {
 
 
     return (
-        <>
+        <div className="body-estudiantes-lista">
             <Header
                             text="MULTIPLAYER" onClick={() => Router.push("/Amenu")}
                             text1="Panel de Juegos" onClick1={() => Router.push("/videojuego")}
@@ -1033,7 +1033,7 @@ export default function EstudiantesLista() {
 
 
                 {!mostrarFormulario && !estudianteEditando && (
-                    <table>
+                    <table className="tabla-estudiantes">
                         <thead>
                             <tr>
                                 <th>Nombre</th>
@@ -1269,6 +1269,6 @@ export default function EstudiantesLista() {
                     )}
 
             </div>
-        </>
+        </div>
     );
 }

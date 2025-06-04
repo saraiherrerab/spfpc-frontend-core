@@ -1,17 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-html, body {
+
+
+.body-cursos {
+  /*background-color: #6F4EF6; */
+  background-color:white;
+  font-family: "Inter", sans-serif;
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
   box-sizing: border-box;
   font-size: 14px;
-}
-
-body {
-  /*background-color: #6F4EF6; */
-  background-color:white;
-  font-family: "Inter", sans-serif;
  
 
 }
@@ -43,7 +42,7 @@ body {
   color: black;
 }
 
-table {
+.table-curso {
   background-color: white; /* Fondo blanco */
   border-radius: 20px; /* Esquinas redondeadas */
   width: 100%; /* La tabla ocupa el ancho del contenedor .listado */

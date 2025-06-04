@@ -2,22 +2,16 @@
 
 
 .body_profile{
-  
-  min-height: 100vh; /* se asegura de que tenga al menos el alto del viewport */
-  background-color: #6F4EF6;
-
-}
-
-   
-
-html,
-body {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
    background-color: #6F4EF6;
 }
+
+   
+
+
 
 .titulo{
     margin-bottom:15px;

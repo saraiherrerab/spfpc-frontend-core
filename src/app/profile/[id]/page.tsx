@@ -263,7 +263,7 @@ export default function Profile() {
   const Router = useRouter();
 
   return (
-    <>
+    <div className="Un-Contenedorsote">
     <Header
                                     text="MULTIPLAYER" onClick={() => Router.push("/Amenu")}
                                     text1="Panel de Juegos" onClick1={() => Router.push("/videojuego")}
@@ -332,6 +332,6 @@ export default function Profile() {
                           </div>
                       </div> 
     </div>
-    </>
+    </div>
   );
 }

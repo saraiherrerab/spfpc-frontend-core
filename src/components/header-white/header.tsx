@@ -17,7 +17,7 @@ export default function Header({ text, onClick, text1, onClick1, text2, onClick2
     return (
         <>
         
-        <div className='header-container'>
+        <div className='header-container-mw'>
             <p className="header-logo" onClick={onClick}>
                     {text}
             </p>

@@ -72,7 +72,7 @@ export default function Header() {
     
    
   return (
-    <div className='header-container'>
+    <div className='header-container-m-m'>
       <p className="header-logo" onClick={() => router.push("/menu")}>
         MULTIPLAYER
       </p>

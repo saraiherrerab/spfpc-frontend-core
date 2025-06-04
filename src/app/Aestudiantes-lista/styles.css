@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-html, body {
+.body-estudiantes-lista {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -41,10 +41,10 @@ html, body {
   color: black;
 }
 
-table {
+.tabla-estudiantes {
   background-color: white;
   border-radius: 20px;
-  width: 100%;
+  width: 80%;
   margin-top: 0;
   border-collapse: separate;
   border-spacing: 0;
