@@ -1,5 +1,5 @@
 import './foto.css';
-
+import Image from 'next/image'
 
 interface FotoProps {
   imageUrl: string;
@@ -8,7 +8,7 @@ interface FotoProps {
 export default function Foto({  imageUrl  }: FotoProps) {
   return (
     <button className="foto-container">
-        <img src={imageUrl}  className="foto"/>
+        <Image src={imageUrl}  className="foto" alt="Picture of the author" width={500} height={500}/>
     </button>
   );
 }

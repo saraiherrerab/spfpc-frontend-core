@@ -141,6 +141,8 @@
   grid-column-gap: 30px;
   grid-row-gap: 10px; 
   min-height: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
   background-color: #6F4EF6;
 } 
 

@@ -126,7 +126,7 @@ export default function Reportes( ) {
         nombre_curso: ""
     })
 
-        const [ informacionGrupoSinHorario, setInformacionGrupoSinHorario ] = useState<{
+    const [ informacionGrupoSinHorario, setInformacionGrupoSinHorario ] = useState<{
         apellido: string,
         id_curso: number,
         id_grupo: number,
@@ -196,7 +196,6 @@ export default function Reportes( ) {
   return (
 
         <div className="contenedor_pagina">
-            <div className="dimensiones_header">
                 <Header
                                 text="MULTIPLAYER" onClick={() => Router.push("/Amenu")}
                                 text1="Panel de Juegos" onClick1={() => Router.push("/videojuego")}
@@ -204,7 +203,6 @@ export default function Reportes( ) {
                                 text3="" onClick3={() => ("")}
                                 text4="Salir" onClick4={() => Router.push("/")}>
                 </Header>
-            </div>
             
             <div className="contenedor_reporte">
                 <div>

@@ -4,7 +4,7 @@ import './styles.css';
 import { useRouter } from "next/navigation";
 import MenuButton from "../../components/menuButton/menubutton";
 import Saludo  from "../../components/saludo/saludo";
-
+import Image from 'next/image'
 
 
 interface UsuarioInterface {
@@ -54,30 +54,30 @@ export default function Amenu() {
   return <>
     
     <div className="menu background_menu">
-      <img src="/boton-salir.png" alt="Salir" className="boton-salir"  onClick={()=>Router.push("/")}/>
+      <Image src="/boton-salir.png" alt="Salir" className="boton-salir"  onClick={()=>Router.push("/")} width={500} height={500}/>
       <Saludo usuario="admin"></Saludo>
       <div className="contenedor">
       <div className= "MButtonsContainer">
 
               <div className="descripcion">
-                  <MenuButton imageUrl='./educacion-fisica.png' onClick={()=>Router.push("/Aadmins-lista")}/>
+                  <MenuButton imageUrl='/educacion-fisica.png' onClick={()=>Router.push("/Aadmins-lista")}/>
                   <span>MIS DATOS</span>
               </div>
               <div className="descripcion">
-                  <MenuButton imageUrl='./game-console.png' onClick={()=>Router.push("/videojuego")}/>
+                  <MenuButton imageUrl='/game-console.png' onClick={()=>Router.push("/videojuego")}/>
                   <span>JUEGOS</span>
               </div>
               <div className="descripcion">
-                  <MenuButton imageUrl='./student.png' onClick={()=>Router.push("/Aestudiantes-lista")}/>
+                  <MenuButton imageUrl='/student.png' onClick={()=>Router.push("/Aestudiantes-lista")}/>
                   <span>ESTUDIANTES</span>
               </div>
               <div className="descripcion">
-                  <MenuButton imageUrl='./teacher.png' onClick={()=>Router.push("/Aprofesores-lista")}/>
+                  <MenuButton imageUrl='/teacher.png' onClick={()=>Router.push("/Aprofesores-lista")}/>
                   <span>PROFESORES</span>
               </div>
               
               <div className="descripcion">
-                  <MenuButton imageUrl='./grupo.png' onClick={()=>Router.push("/GruposYCursos")}/>
+                  <MenuButton imageUrl='/grupo.png' onClick={()=>Router.push("/GruposYCursos")}/>
                   <span>Cursos</span>
               </div>
 

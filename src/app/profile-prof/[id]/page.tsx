@@ -186,17 +186,18 @@ export default function Profileprof() {
   const Router = useRouter();
 
     return (
-      <>
-       <Header
-                                       text="MULTIPLAYER" onClick={() => Router.push("/Amenu")}
-                                       text1="Panel de Juegos" onClick1={() => Router.push("/videojuego")}
-                                       text2="Menu" onClick2={() => Router.push("/Amenu")}
-                                       text3="Mis datos" onClick3={() => Router.push("/Aadmins-lista")}
-                                       text4="Salir" onClick4={() => Router.push("/")}>
+      <div className="Un-Contenedorsote">  
+        <Header
+            text="MULTIPLAYER" onClick={() => Router.push("/Amenu")}
+            text1="Panel de Juegos" onClick1={() => Router.push("/videojuego")}
+            text2="Menu" onClick2={() => Router.push("/Amenu")}
+            text3="Mis datos" onClick3={() => Router.push("/Aadmins-lista")}
+            text4="Salir" onClick4={() => Router.push("/")}>
         </Header>
-                
         <div className="perfil body_profile">
+
           
+
             <div className="datosUsario">
                     {imagenDescargadaUrl ? (
                     <Foto imageUrl={imagenDescargadaUrl} />
@@ -208,7 +209,7 @@ export default function Profileprof() {
                   </div>
                   <Datos titulo="Cedula" descripcion={ usuario.cedula }></Datos>
                   <Datos titulo="Edad" descripcion={ usuario.edad.toString() }></Datos>
-                  <button onClick={() => descargarCVprofesor() } disabled = {(usuario.curriculum) ? false : true}>Descargar Curriculum</button>
+                  <button onClick={() => descargarCVprofesor() } disabled = {(usuario.curriculum) ? false : true} className="btn-primary">Descargar Curriculum</button>
             </div>
             <div className="datosBloques">
                 <div className="fila">
@@ -234,8 +235,10 @@ export default function Profileprof() {
                     </div>
                 </div>
             </div> 
+          
+            
         </div>
-      </>
+      </div>
     )
             
     
