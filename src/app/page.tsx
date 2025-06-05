@@ -5,7 +5,7 @@ import { useState } from "react";
 import './login.css';
 import Imagen from "../components/imageRight/imageRight";
 import Swal from "sweetalert2";
-
+import Image from 'next/image'
 export default function Page() {
 
   const baseUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -74,10 +74,12 @@ export default function Page() {
       <div className="login-container">
         <div className="form-container">
           <div className="input-container">
-              <img
-                  src="./login-decoracion.png"
+              <Image
+                  src="/login-decoracion.png"
                   alt="Decoración Login"
                   className="login-decorativo"
+                  width={200}
+                  height={150}
                 />
                 <p className="titulo-login">Bienvenido explorador, al reino de multiplayer</p>
 
