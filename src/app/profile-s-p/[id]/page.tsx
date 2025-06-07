@@ -262,7 +262,7 @@ export default function Profile() {
   const Router = useRouter();
 
   return (
-    <div className="altoTotal anchoTotal">
+    <div className="Un-Contenedorsote">
     <Header>
     </Header>
     <div className="perfil body_profile">

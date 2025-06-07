@@ -1,11 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 
-
 .header-container-m{
     display:flex;
-    background-color: white; 
-    color: #4B22F4; 
+    background-color: #4B22F4; 
+    color: white; 
     font-size: 14px;          
     font-family: "Inter", sans-serif;
     width: 90%;
@@ -17,7 +16,7 @@
     justify-content: space-between; 
    
 
-    
+
 }
 
 .header-logo{
@@ -32,7 +31,7 @@
     margin-left: 20px;
     margin-right: 20px;
     position: relative;
-    color: #4B22F4;  /* Color base del texto */
+    color: white; /* Color base del texto */
     transition: color 0.3s ease;
 }
 

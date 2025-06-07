@@ -1,6 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 
+html,body{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
 
 .Un-Contenedorsote{
   width: 100%;
@@ -9,18 +16,6 @@
   padding: 0;
   background-color: #6F4EF6;
 }
-.body_profile{
-  width: 100%;
-  height: 90%;
-  margin: 0;
-  padding: 0;
-  background-color: #6F4EF6;
-}
-
-   
-
-
-
 .titulo{
     margin-bottom:15px;
 }
@@ -30,9 +25,9 @@
     display: flex; /* Convierte .perfil en un contenedor Flexbox */
     flex-direction: row; /* Alinea los elementos hijos en fila (uno al lado del otro) */
     align-items: flex-start; /* Alinea los elementos verticalmente al inicio */
+    width:100%;
+    height: 90%;
 }
-
-
 
 .datosBloques{
     align-items: center;
@@ -43,8 +38,8 @@
     position: relative; /* Asegura que se superponga al canvas */ 
     margin: 0;
     padding-right: 10rem;
+    height: 100%;
     width: 100%;
-
     
 }
 
@@ -65,7 +60,6 @@
   align-items: center;
   flex: 1;
   gap: 6rem; /* Espacio entre columnas */
-  
   width: 100%;
   
 }
@@ -79,7 +73,6 @@
   margin-bottom: 20px;
 
 }
-
 .btn-primary {
   background-color: #4B22F4; 
   color: white;             

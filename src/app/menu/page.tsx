@@ -79,7 +79,7 @@ const defaultUsuario: Usuario = {
                 </div>
                 
                 <div className="descripcion">
-                    <MenuButton imageUrl='/teacher.png' onClick={()=>Router.push("/profile-prof/"+usuario.id_usuario)}/>
+                    <MenuButton imageUrl='/teacher.png' onClick={()=>Router.push("/profile-p-p/"+usuario.id_usuario)}/>
                     <span>MI PERFIL</span>
                 </div>
                 

@@ -1,19 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+html,body{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
 .contenedor_pagina{
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100vh;
   font-family: "Inter", sans-serif;
-  background-color: #6F4EF6;
+  background-color: white;
 }
 
 /* Parte izquierda del container2 */
 .c2ls {
   width: 100%;
   height: 100%;
-  background-color: white; /* solo para visualizar */
+  background-color: #F6F7F9; /* solo para visualizar */
   padding: 10px;
   box-sizing: border-box;
   border: 2px solid #F6F7F9; /* Añadimos un borde de 2 píxeles de grosor y color #D9D9D9 */
@@ -88,7 +94,7 @@
   margin-left: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
-  color:white;
+  color:black
 }
 
 .leyenda {
@@ -140,7 +146,7 @@
   grid-column-gap: 30px;
   grid-row-gap: 10px; 
   min-height: 100%;
-  background-color: #6F4EF6;
+  background-color: white;
 } 
 
 .contenedor_premiaciones_y_actividades {
@@ -276,7 +282,7 @@
   justify-content: center;  /* Centra verticalmente el gráfico */
   align-items: center;      /* Centra horizontalmente el gráfico */
   padding: 20px 10px;       /* Añadir algo de espacio alrededor */
-  background-color: #fff;  /* Opcional, para que no quede transparente */
+  background-color: #f9f9f9;   /* Opcional, para que no quede transparente */
   width: 100%;
 
 }
