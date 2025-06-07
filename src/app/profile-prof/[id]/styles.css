@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-html,body{
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-}
 
 
 .Un-Contenedorsote{
@@ -50,7 +44,7 @@ html,body{
     margin: 0;
     padding-right: 10rem;
     width: 100%;
-    height: 100%;
+
     
 }
 
@@ -71,8 +65,7 @@ html,body{
   align-items: center;
   flex: 1;
   gap: 6rem; /* Espacio entre columnas */
-  padding-bottom: 30px;
-  padding-top: 30px;
+  
   width: 100%;
   
 }
@@ -82,7 +75,7 @@ html,body{
 }
 .notas {
   flex: 1;
-  height: 100%;
+  height: 80%;
   margin-bottom: 20px;
 
 }

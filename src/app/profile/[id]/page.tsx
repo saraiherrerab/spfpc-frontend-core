@@ -219,6 +219,7 @@ export default function Profile() {
 
     const informacionCurso = await obtenerCursoAlumno(resultadoConsulta.id_grupo)
     setCursoAlumno(informacionCurso)
+    console.log(informacionCurso)
 
     const informacionGrupo = await obtenerGrupoAlumno(resultadoConsulta.id_grupo)
     setGrupoAlumno(informacionGrupo)

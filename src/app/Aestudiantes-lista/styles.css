@@ -53,12 +53,7 @@
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-th {
-  color: rgb(141, 140, 140);
-  padding: 20px 25px;
-  background-color: white;
-  font-weight: bold;
-}
+
 
 .texto_central {
   text-align: center;
