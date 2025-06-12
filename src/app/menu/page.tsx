@@ -37,8 +37,7 @@ const defaultUsuario: Usuario = {
   usuario: "",
   clave_acceso: "",
   cedula: "",
-  id_profesor: 0,
-
+  id_profesor: 0
 };
 
 
