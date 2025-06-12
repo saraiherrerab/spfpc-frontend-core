@@ -39,6 +39,7 @@
   margin-bottom: 10px;
   font-size: 16px;
   color: black;
+  padding-left: 7%;
 }
 
 .tabla-estudiantes {
@@ -93,15 +94,6 @@ th:last-child {
   border-right: 0.01px solid #ccc;
 }
 
-.barraBusqueda {
-  margin-bottom: 10px;
-  width: 80%;
-  display: flex;
-  align-items: end;
-  margin-right: 20px;
-  margin-left: 45rem;
-}
-
 .search-input-container {
   position: relative;
   flex-grow: 1;
@@ -153,6 +145,17 @@ th:last-child {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
   justify-content: center;
   font-family: "Inter", sans-serif;
+}
+
+.encabezado{
+  width: 100%;
+}
+
+.barraBusqueda {
+  margin-bottom: 10px;
+  width: 80%;
+  display: flex;
+  align-items: end;
 }
 
 .formulario-agregar h3 {

@@ -818,13 +818,6 @@ export default function EstudiantesLista() {
                             onChange={ e => handleSearchChange(e)}
                             className="search-input"
                         />
-                        <img
-                            src="./lupa-icon.png"
-                            alt="Buscar"
-                            className="search-icon"
-                            onClick={() => handleSearchClick()}
-                            style={{ cursor: 'pointer' }}
-                        />
                     </div>
                     </div>
                 </div>
