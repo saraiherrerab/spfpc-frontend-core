@@ -3,8 +3,8 @@
     flex-direction: column; /* Coloca la imagen y el texto en columna */
     align-items: center; /* Centra la imagen y el texto horizontalmente */
     justify-content: center; /* Centra la imagen y el texto verticalmente */
-    width: 250px; /* Ajusta el ancho del botón */
-    height: 250px; /* Ajusta la altura del botón */
+    width: 150px; /* Ajusta el ancho del botón */
+    height: 150px; /* Ajusta la altura del botón */
     border-radius: 50%; /* Hace que el botón sea un círculo */
     border: none;
     background-color: white; /* Botón blanco */

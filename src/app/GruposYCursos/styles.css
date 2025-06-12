@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
-html, body {
+.grupos-y-cursos {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -79,7 +79,7 @@ html, body {
   outline: none;
 }
 
-table {
+.laTabla {
   background-color: white;
   border-radius: 20px;
   width: 100%;

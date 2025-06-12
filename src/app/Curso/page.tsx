@@ -488,7 +488,7 @@ export default function AdministradoresLista() {
     }
 
     return (
-        <>
+        <div className="body-cursos">
             <Header
                     text="MULTIPLAYER" onClick={() => Router.push("/")}
                     text1="Panel de Juegos" onClick1={() => Router.push("/videojuego")}
@@ -534,7 +534,7 @@ export default function AdministradoresLista() {
             {
                 !mostrarGrupos && !mostrarFormulario && !cursoEditando && 
                 (
-                    <table>
+                    <table className="table-curso">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -709,6 +709,6 @@ export default function AdministradoresLista() {
                 )
             }
             </div>
-        </>
+        </div>
     );
 }

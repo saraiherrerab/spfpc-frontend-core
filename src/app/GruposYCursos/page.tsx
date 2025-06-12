@@ -211,7 +211,7 @@ const handleSearchClick = () => {
 }, [cursosFiltrados]);
 
   return (
-    <>
+    <div className="grupos-y-cursos">
       <Header
         text="MULTIPLAYER" onClick={() => Router.push("/")}
         text1="Panel de Juegos" onClick1={() => Router.push("/videojuego")}
@@ -334,7 +334,7 @@ const handleSearchClick = () => {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }
 

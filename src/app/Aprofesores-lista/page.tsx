@@ -1033,7 +1033,7 @@ export default function ProfesoresLista() {
         }
       };
     return (
-        <>
+        <div className="body-profesores-lista">
             <Header
                 text="MULTIPLAYER" onClick={() => Router.push("/Amenu")}
                 text1="Panel de Juegos" onClick1={() => Router.push("/videojuego")}
@@ -1043,7 +1043,7 @@ export default function ProfesoresLista() {
             </Header>
 
             
-            <div className="listado">
+            <div className="listado-prof">
                 {!mostrarFormulario && !profesorEditando && (
                     <div className="encabezado">
                     <div className="tituloListado" style={{ cursor: 'pointer' }}>
@@ -1068,7 +1068,7 @@ export default function ProfesoresLista() {
                         />
                     </div>
                 </div>
-            </div>
+                    </div>
                  )}
                 
 
@@ -1268,13 +1268,13 @@ export default function ProfesoresLista() {
                     <button onClick={() => setMostrarFormulario(false)}>Cancelar</button>
                     </div>
                 </div>
-                )}
+            )}
 
             
 
 
             {!mostrarFormulario && !profesorEditando && (
-                <table>
+                <table className="tabla-profesores">
                     <thead>
                         <tr>
                             <th>Nombre</th>
@@ -1566,7 +1566,7 @@ export default function ProfesoresLista() {
           
             
             </div>
-        </>
+        </div>
     );
 }
 

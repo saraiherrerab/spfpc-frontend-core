@@ -37,8 +37,7 @@ const defaultUsuario: Usuario = {
   usuario: "",
   clave_acceso: "",
   cedula: "",
-  id_profesor: 0,
-
+  id_profesor: 0
 };
 
 
@@ -62,7 +61,6 @@ const defaultUsuario: Usuario = {
 
 
     return <>
-      <canvas id="menu" style={{ width: "100vw", height: "100vh", position:"relative" }} />
       
       <div className="menu">
         <img src="/boton-salir.png" alt="Salir" className="boton-salir"  onClick={()=>Router.push("/")}/>
@@ -70,17 +68,17 @@ const defaultUsuario: Usuario = {
         <div className="contenedor">
         <div className= "MButtonsContainer">
                 <div className="descripcion">
-                    <MenuButton imageUrl='./game-console.png' onClick={()=>Router.push("/videojuego")}/>
+                    <MenuButton imageUrl='/game-console.png' onClick={()=>Router.push("/videojuego")}/>
                     <span>JUEGOS</span>
                 </div>
                 
                 <div className="descripcion">
-                    <MenuButton imageUrl='./student.png' onClick={()=>Router.push("/Pestudiantes-lista")}/>
+                    <MenuButton imageUrl='/student.png' onClick={()=>Router.push("/Pestudiantes-lista")}/>
                     <span>ESTUDIANTES</span>
                 </div>
                 
                 <div className="descripcion">
-                    <MenuButton imageUrl='./teacher.png' onClick={()=>Router.push("/profile-prof/"+usuario.id_usuario)}/>
+                    <MenuButton imageUrl='/teacher.png' onClick={()=>Router.push("/profile-p-p/"+usuario.id_usuario)}/>
                     <span>MI PERFIL</span>
                 </div>
                 

@@ -566,7 +566,7 @@ useEffect(() => {
   setGrupoAsignadoEstudiante({ id_grupo: 0, nombre_grupo: '', id_curso: 0, id_profesor_grupo: 0})
   }  
   return (
-    <>
+    <div className="body-grupos">
       <Header
               text="MULTIPLAYER" onClick={() => Router.push("/")}
               text1="Panel de Juegos" onClick1={() => Router.push("/videojuego")}
@@ -886,7 +886,7 @@ useEffect(() => {
           </div>
 
         }
-         <table>
+         <table className="laTabla">
       <thead>
         <tr>
           <th>Nombre</th>
@@ -931,5 +931,5 @@ useEffect(() => {
       </div>
     )}
   </div>
-</>);
+    </div>);
 }

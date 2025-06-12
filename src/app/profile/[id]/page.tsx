@@ -219,6 +219,7 @@ export default function Profile() {
 
     const informacionCurso = await obtenerCursoAlumno(resultadoConsulta.id_grupo)
     setCursoAlumno(informacionCurso)
+    console.log(informacionCurso)
 
     const informacionGrupo = await obtenerGrupoAlumno(resultadoConsulta.id_grupo)
     setGrupoAlumno(informacionGrupo)
@@ -263,13 +264,15 @@ export default function Profile() {
   const Router = useRouter();
 
   return (
-    <>
+    
+    <div className="Un-Contenedorsote">
     <Header
                                     text="MULTIPLAYER" onClick={() => Router.push("/Amenu")}
                                     text1="Panel de Juegos" onClick1={() => Router.push("/videojuego")}
                                     text2="Menu" onClick2={() => Router.push("/Amenu")}
                                     text3="Mis datos" onClick3={() => Router.push("/Aadmins-lista")}
-                                    text4="Salir" onClick4={() => Router.push("/")}>
+                                    text4="Salir" onClick4={() =>{ Router.push("/"); Router.refresh();} }>
+                                      
     </Header>
     <div className="perfil body_profile">
             <div className="datosUsario">
@@ -332,6 +335,6 @@ export default function Profile() {
                           </div>
                       </div> 
     </div>
-    </>
+    </div>
   );
 }

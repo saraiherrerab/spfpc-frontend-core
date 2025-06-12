@@ -5,10 +5,11 @@ import { useState } from "react";
 import './login.css';
 import Imagen from "../components/imageRight/imageRight";
 import Swal from "sweetalert2";
-
+import Image from 'next/image'
 export default function Page() {
 
   const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+  const aplicationUrl = process.env.NEXT_PUBLIC_APLICATION_URL;
 
   const validarUsuario = async (usuario_val: string, clave_acceso_val: string) => {
     try {
@@ -67,38 +68,128 @@ export default function Page() {
 
   const [usuario, setUsuario] = useState('');
   const [claveAcceso, setClaveAcceso] = useState('');
+  // Nuevo estado para controlar la vista (login o recuperación)
+  const [isRecovering, setIsRecovering] = useState(false);
+
+  // Nuevo estado para el campo de recuperación (correo o usuario)
+  const [recoveryIdentifier, setRecoveryIdentifier] = useState('');
+
+  // --- Nueva función para manejar la recuperación de contraseña ---
+  const handlePasswordRecovery = async (identifier: string) => {
+    if (!identifier) {
+      Swal.fire({
+        icon: "warning",
+        title: "Campo requerido",
+        text: "Por favor, ingresa tu usuario o correo electrónico."
+      });
+      return;
+    }
+
+    try {
+      // **AQUÍ VA TU LÓGICA DE API**
+      // Se asume un endpoint como /recuperar-clave que espera un email o usuario
+      console.log(`Iniciando recuperación para: ${identifier}`);
+      const response = await fetch(`${baseUrl}/enviar-correo`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(
+          {
+            "to": identifier,
+            "subject": "Restablecer tu contraseña",
+            "text": `Para continuar, haz clic en el siguiente enlace: ${aplicationUrl}/recuperar/${identifier}`
+          }
+        )
+      });
+
+      if (!response.ok) {
+        throw new Error("El servidor no pudo procesar la solicitud");
+      }
+      
+
+      // Si la petición es exitosa, muestra un mensaje genérico
+      await Swal.fire({
+        icon: "success",
+        title: "Petición Enviada",
+        text: "Si existe una cuenta asociada, recibirás un correo con las instrucciones para recuperar tu contraseña."
+      });
+
+      // Regresa a la vista de login
+      setIsRecovering(false);
+      setRecoveryIdentifier('');
+
+    } catch (error) {
+      console.error('Error en la recuperación:', error);
+      await Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "No se pudo completar la solicitud. Por favor, inténtalo más tarde."
+      });
+    }
+  }
 
 
   const Router = useRouter();
-    return <>
-      <div className="login-container">
-        <div className="form-container">
-          <div className="input-container">
-              <img
-                  src="./login-decoracion.png"
-                  alt="Decoración Login"
-                  className="login-decorativo"
-                />
-                <p className="titulo-login">Bienvenido explorador, al reino de multiplayer</p>
+  // --- Renderizado del Componente ---
+  return (
+    <div className="login-container">
+      <div className="form-container">
+        <div className="input-container">
+          <Image
+            src="/login-decoracion.png"
+            alt="Decoración Login"
+            className="login-decorativo"
+            width={200}
+            height={150}
+          />
 
-          <input
-            type="text"
-            placeholder="Usuario"
-            value={usuario}
-            onChange={(e) => setUsuario(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Contraseña"
-            value={claveAcceso}
-            onChange={(e) => setClaveAcceso(e.target.value)}
-          />
-          <button type="submit" onClick={() => validarUsuario(usuario,claveAcceso)}>Iniciar sesión</button>
-          </div>
+          {isRecovering ? (
+            // --- Interfaz de Recuperación de Contraseña ---
+            <>
+              <p className="titulo-login">Recupera tu acceso</p>
+              <p className="recovery-instructions">
+                Ingresa tu usuario o correo electrónico para continuar.
+              </p>
+              <input
+                type="text"
+                placeholder="Usuario o Correo electrónico"
+                value={recoveryIdentifier}
+                onChange={(e) => setRecoveryIdentifier(e.target.value)}
+              />
+              <button type="button" onClick={() => handlePasswordRecovery(recoveryIdentifier)}>
+                Enviar Instrucciones
+              </button>
+              <a href="#" className="back-to-login" onClick={() => setIsRecovering(false)}>
+                &larr; Volver a iniciar sesión
+              </a>
+            </>
+          ) : (
+            // --- Interfaz de Login (Original) ---
+            <>
+              <p className="titulo-login">Bienvenido explorador, al reino de multiplayer</p>
+              <input
+                type="text"
+                placeholder="Usuario"
+                value={usuario}
+                onChange={(e) => setUsuario(e.target.value)}
+              />
+              <input
+                type="password"
+                placeholder="Contraseña"
+                value={claveAcceso}
+                onChange={(e) => setClaveAcceso(e.target.value)}
+              />
+              <button type="submit" onClick={() => validarUsuario(usuario, claveAcceso)}>
+                Iniciar sesión
+              </button>
+              <a href="#" className="forgot-password" onClick={() => setIsRecovering(true)}>
+                ¿Olvidaste tu contraseña?
+              </a>
+            </>
+          )}
         </div>
-        <Imagen/>
       </div>
-      
-    </>
+      <Imagen />
+    </div>
+    );
     
   }

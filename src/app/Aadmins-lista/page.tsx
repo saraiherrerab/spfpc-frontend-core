@@ -176,7 +176,7 @@ export default function AdministradoresLista() {
     };
 
     return (
-        <>
+        <div className="admins-lista-body">
             <Header
                             text="MULTIPLAYER" onClick={() => Router.push("/Amenu")}
                             text1="Panel de Juegos" onClick1={() => Router.push("/videojuego")}
@@ -210,7 +210,7 @@ export default function AdministradoresLista() {
             )}
 
             {!mostrarFormulario && !administradorEditando && (
-                <table>
+                <table className="tabla-administradores">
                     <thead>
                         <tr>
                             <th>Nombre</th>
@@ -371,6 +371,6 @@ export default function AdministradoresLista() {
             )}
 
             </div>
-        </>
+        </div>
     );
 }

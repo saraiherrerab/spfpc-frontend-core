@@ -185,7 +185,7 @@ export default function Profileprof() {
   const Router = useRouter();
 
     return (
-      <>
+      <div className="Un-Contenedorsote">
        <Header></Header>
                       
                   
@@ -202,7 +202,7 @@ export default function Profileprof() {
                   </div>
                   <Datos titulo="Cedula" descripcion={ usuario.cedula }></Datos>
                   <Datos titulo="Edad" descripcion={ usuario.edad.toString() }></Datos>
-                  <button onClick={() => descargarCVprofesor() } disabled = {(usuario.curriculum) ? false : true}>Descargar Curriculum</button>
+                  <button className="btn-primary" onClick={() => descargarCVprofesor() } disabled = {(usuario.curriculum) ? false : true}>Descargar Curriculum</button>
             </div>
             <div className="datosBloques">
                 <div className="fila">
@@ -229,7 +229,7 @@ export default function Profileprof() {
                 </div>
             </div> 
         </div>
-      </>
+      </div>
     )
             
     

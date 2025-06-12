@@ -541,11 +541,12 @@ export async function Nivel4(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
             if(aciertos==1){
                       
               construccion.destroy();
-                
               cambiarGanar(true);
               setState(true);
-              juegoKaplay.play("bien", { volume: 1, speed: 1.5, loop: false });
-              await sleep(2000)
+                
+              
+              
+              
               
 
             }else if(aciertos==2){
@@ -563,7 +564,7 @@ export async function Nivel4(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
               cambiarGanar(true);
               setState(true);
               juegoKaplay.play("aprobado", { volume: 1, speed: 1.5, loop: false });
-              await sleep(2000)
+              
             
               construccion2.destroy();
               ovejas.forEach( (oveja: GameObj<any>) => {
@@ -725,7 +726,6 @@ export async function Nivel4(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
               juegoKaplay.play("bien", { volume: 1, speed: 1.5, loop: false });
               await sleep(2000)
               
-              await sleep(2000)
               
             }else{
               console.log("Fallaste" +ultimo)
@@ -764,9 +764,7 @@ export async function Nivel4(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
 
               aciertos = aciertos + 1;
 
-              console.log("sumando mardito ", aciertos)
               
-              await sleep(2000)
               
             }else{
               console.log("Fallaste" + ultimo)
@@ -802,8 +800,6 @@ export async function Nivel4(juegoKaplay:KAPLAYCtx<{},never>, setState:any, camb
               arbol.play("bye");
               aciertos = aciertos + 1;
               juegoKaplay.play("bien", { volume: 1, speed: 1.5, loop: false });
-              await sleep(2000)
-
               await sleep(2000)
               
             }else{

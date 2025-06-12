@@ -1,5 +1,5 @@
 import './menubutton.css';
-
+import Image from 'next/image'
 
 interface MenuButtonProps {
   imageUrl: string;
@@ -11,7 +11,7 @@ export default function MenuButton({  imageUrl , onClick }: MenuButtonProps) {
   console.log(imageUrl)
   return (
     <button className="menu-button" onClick={onClick}>
-        <img src={imageUrl}  className="button-image"/>
+        <Image src={imageUrl}  className="button-image" alt="Picture of the author" width={500} height={500}/>
     </button>
   );
 }
