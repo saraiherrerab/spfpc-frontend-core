@@ -188,7 +188,8 @@ export default function Page() {
                         <input
                         type={mostrarClave ? 'text' : 'password'}
                         placeholder="Clave"
-                        autoComplete="new-password"
+                        value={claveAcceso}
+                        onChange={(e) => setClaveAcceso(e.target.value)}
                         />
                         <img
                         src={mostrarClave ? '/icons/ojito-abierto.png' : '/icons/ojito-cerrado.png'}
