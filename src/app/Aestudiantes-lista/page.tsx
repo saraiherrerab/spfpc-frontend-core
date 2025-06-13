@@ -813,10 +813,17 @@ export default function EstudiantesLista() {
                     <div className="search-input-container">
                         <input
                             type="text"
-                            placeholder="Buscar estudiantes..."
+                            placeholder="Buscar profesores..."
                             value={searchTerm}
                             onChange={ e => handleSearchChange(e)}
                             className="search-input"
+                        />
+                        <img
+                            src="./lupa-icon.png"
+                            alt="Buscar"
+                            className="search-icon"
+                            onClick={() => handleSearchClick()}
+                            style={{ cursor: 'pointer' }}
                         />
                     </div>
                     </div>

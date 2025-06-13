@@ -151,11 +151,44 @@ th:last-child {
   width: 100%;
 }
 
+
 .barraBusqueda {
   margin-bottom: 10px;
   width: 80%;
   display: flex;
-  align-items: end;
+  align-items: center; /* Alinea verticalmente los elementos */
+  margin-right:20px;
+}
+
+.search-input-container {
+  position: relative; /* Para posicionar el icono */
+  flex-grow: 1; /* El input ocupa el espacio restante */
+}
+
+.search-icon {
+  position: absolute; /* Posiciona la lupa dentro del contenedor */
+  right: -5px; /* Cambiamos 'left' a 'right' */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  opacity: 0.6;
+  cursor: pointer; /* Indica que es clickable */
+}
+
+.search-input {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left:15px;
+  padding-right:0px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1em;
+}
+
+.search-input:focus {
+  outline: none;
 }
 
 .formulario-agregar h3 {
