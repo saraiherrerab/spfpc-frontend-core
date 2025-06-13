@@ -106,7 +106,7 @@ th:last-child {
 
 .search-icon {
   position: absolute;
-  right: -5px;
+  right: 0px;
   top: 50%;
   transform: translateY(-50%);
   width: 20px;

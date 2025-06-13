@@ -108,7 +108,7 @@ th:last-child {
 
 .search-icon {
   position: absolute; /* Posiciona la lupa dentro del contenedor */
-  right: -5px; /* Cambiamos 'left' a 'right' */
+  right: 100px; /* Cambiamos 'left' a 'right' */
   top: 50%;
   transform: translateY(-50%);
   width: 20px;

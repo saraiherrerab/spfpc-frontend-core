@@ -813,7 +813,7 @@ export default function EstudiantesLista() {
                     <div className="search-input-container">
                         <input
                             type="text"
-                            placeholder="Buscar profesores..."
+                            placeholder="Buscar estudiantes..."
                             value={searchTerm}
                             onChange={ e => handleSearchChange(e)}
                             className="search-input"
@@ -823,7 +823,7 @@ export default function EstudiantesLista() {
                             alt="Buscar"
                             className="search-icon"
                             onClick={() => handleSearchClick()}
-                            style={{ cursor: 'pointer' }}
+                            
                         />
                     </div>
                     </div>
