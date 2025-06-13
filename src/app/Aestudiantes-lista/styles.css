@@ -167,7 +167,7 @@ th:last-child {
 
 .search-icon {
   position: absolute; /* Posiciona la lupa dentro del contenedor */
-  right: 30px; /* Cambiamos 'left' a 'right' */
+  right: 130px; /* Cambiamos 'left' a 'right' */
   top: 50%;
   transform: translateY(-50%);
   width: 20px;
