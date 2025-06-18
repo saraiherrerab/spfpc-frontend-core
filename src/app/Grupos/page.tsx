@@ -254,7 +254,9 @@ useEffect(() => {
 
   // Mostrar lista estudiantes grupo
   const onVerEstudiantes = (grupo: Grupo) => {
-    setMostrarEstudiantesGrupo(grupo);
+    console.log("Grupo seleccionado")
+    console.log(grupo)
+    setMostrarEstudiantesGrupo({...grupo});
   };
 
   const onVolverListaGrupos = () => {
@@ -805,10 +807,8 @@ useEffect(() => {
     {/* Lista de estudiantes de un grupo */}
     {mostrarEstudiantesGrupo && (
       <div className="tabla-estudiantes">
-        <h3>Estudiantes de {mostrarEstudiantesGrupo.nombre_grupo}
-          
-        </h3>
-        <button onClick={() => agregarEstudianteEnGrupo()}><img src="/icons/edit_16dp_E3E3E3_FILL0_wght400_GRAD0_opsz20.svg" alt="Icono fleca" style={{ width: 16, height: 16 }} /></button>
+        <h3>Estudiantes de {mostrarEstudiantesGrupo.nombre_grupo}</h3>
+        <button onClick={() => agregarEstudianteEnGrupo()}><img src="/icons/add_16dp_E3E3E3_FILL0_wght400_GRAD0_opsz20.svg" alt="Icono fleca" style={{ width: 16, height: 16 }} /></button>
         {
           mostrarAsignarEstudianteAGrupo && 
           (
@@ -840,8 +840,8 @@ useEffect(() => {
         {
           estudianteSeleccionado.id_usuario != 0 && !editarGrupoEstudianteSeleccionado &&
           <div>
-             <button onClick={() => agregarEstudianteAGrupo()}><img src="/icons/check_16dp_E3E3E3_FILL0_wght400_GRAD0_opsz20.svg" alt="Icono fleca" style={{ width: 16, height: 16 }} /></button>
-              <button onClick={() => volverATablaDeGrupos()}><img src="/icons/close_16dp_E3E3E3_FILL0_wght400_GRAD0_opsz20.svg" alt="Icono fleca" style={{ width: 16, height: 16 }} /></button>
+            <button onClick={() => agregarEstudianteAGrupo()}><img src="/icons/check_16dp_E3E3E3_FILL0_wght400_GRAD0_opsz20.svg" alt="Icono fleca" style={{ width: 16, height: 16 }} /></button>
+            <button onClick={() => volverATablaDeGrupos()}><img src="/icons/close_16dp_E3E3E3_FILL0_wght400_GRAD0_opsz20.svg" alt="Icono fleca" style={{ width: 16, height: 16 }} /></button>
           </div>
         }
         {

@@ -205,6 +205,7 @@ export default function Page() {
                             cursor: 'pointer',
                             opacity: 0.7
                         }}
+                        
                         />
                     </div>
                     </div>
