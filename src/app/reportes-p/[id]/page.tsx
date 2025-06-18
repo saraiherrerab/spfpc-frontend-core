@@ -11,6 +11,9 @@ import NombreEs from "../../../components/nombreEs/nombreEs";
 
 import './styles.css'
 import obtenerGrupoAlumno from "../functions/obtenerGrupoAlumno";
+import obtenerCursoAlumno from "../functions/obtenerCursoAlumno";
+import obtenerProfesorAlumno from "../functions/obtenerProfesorAlumno";
+import obtenerProfesorGrupo from "../functions/obtenerProfesorAlumno";
 
 interface Estudiante {
   id_usuario: number,
@@ -37,18 +40,11 @@ interface Estudiante {
   rol: string
 }
 
-interface Consulta_Horario {
-  apellido: string;
-  dia_semana: string;
-  hora_fin: string;
-  hora_inicio: string;
-  id_curso: number;
-  id_grupo: number;
-  id_horario: number;
-  id_profesor: number;
-  nombre: string;
-  nombre_curso: string;
-  nombre_grupo: string;
+interface Grupo {
+  id_grupo: number,
+  nombre_grupo: string,
+  id_curso: number,
+  id_profesor_grupo: number
 }
 
 interface Profesor {
@@ -99,7 +95,6 @@ export default function Reportes( ) {
         }
     );
 
-    const [horarios, setHorarios] = useState<Consulta_Horario[]>([])
     const [profesor, setProfesor] = useState<Profesor>(
             {
                 id_usuario: 0,
@@ -116,9 +111,18 @@ export default function Reportes( ) {
                 curriculum: "",
                 formacion: ""
             }
-        );
+    );
 
-        const [ informacionGrupoSinHorario, setInformacionGrupoSinHorario ] = useState<{
+    const [grupo, setGrupo] = useState<Grupo>({
+        id_grupo: 0,
+        nombre_grupo: "No tiene grupo asignado",
+        id_curso: 0,
+        id_profesor_grupo: 0
+    })
+
+
+
+    const [ informacionGrupoSinHorario, setInformacionGrupoSinHorario ] = useState<{
         apellido: string,
         id_curso: number,
         id_grupo: number,
@@ -147,11 +151,26 @@ export default function Reportes( ) {
         setUsuario(resultadoConsulta)
 
         if(resultadoConsulta.id_grupo){
-            const resultadoGrupo = await obtenerGrupoAlumno(resultadoConsulta.id_usuario)
-            const resultadoProfesor = await obtenerGrupoAlumno(resultadoGrupo.id_profesor_grupo)
-            if (resultadoProfesor) {
-                setProfesor(resultadoProfesor); // solo aquí
+            const resultadoGrupo = await obtenerGrupoAlumno(resultadoConsulta.id_grupo)
+            console.log(resultadoGrupo)
+
+            const resultadoCurso = await obtenerCursoAlumno(resultadoConsulta.id_grupo)
+            console.log(resultadoCurso)
+
+            setGrupo({
+                id_grupo: 0,
+                nombre_grupo: resultadoCurso.nombre_curso,
+                id_curso: 0,
+                id_profesor_grupo: 0
+            })
+
+            const resultadoProfesor = await obtenerProfesorGrupo(resultadoConsulta.id_grupo)
+            console.log(resultadoProfesor)
+
+            if(resultadoProfesor.length > 0){
+                setProfesor({...resultadoProfesor[0]})
             }
+            
         
 
         
@@ -250,7 +269,7 @@ export default function Reportes( ) {
                                 <Parametros parametroTitulo1="CONSTRUCCIÓN DE ALGORITMOS" parametroTitulo2={(usuario.construccion_algoritmos) ? usuario.construccion_algoritmos : ""} />
                             </div>
                             <div className="contenedor_construccion_profesor">
-                                <Notita NotitaTitulo1={(profesor.id_profesor) ? profesor.nombre + " " + profesor.apellido : informacionGrupoSinHorario[0].nombre + " " + informacionGrupoSinHorario[0].apellido } NotitaTitulo2={(horarios.length > 0) ? horarios[0].nombre_curso : (informacionGrupoSinHorario.length > 0) ? informacionGrupoSinHorario[0].nombre_curso : ""}/>
+                                <Notita NotitaTitulo1={(profesor.id_profesor !== 0) ? profesor.nombre + " " + profesor.apellido : "No tiene profesor asignado" } NotitaTitulo2={grupo.nombre_grupo}/>
                             </div>
                         </div>
                     </div>
