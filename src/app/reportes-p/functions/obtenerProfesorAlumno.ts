@@ -1,5 +1,6 @@
 export default async function obtenerProfesorGrupo(id_profesor: number){
-    const datosHorario = await fetch(`http://localhost:5555/grupos/profesores/${id_profesor}`,{
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+    const datosHorario = await fetch(`${baseUrl}/grupos/profesores/${id_profesor}`,{
       method: 'GET', // Método de la solicitud (GET, POST, PUT, DELETE, etc.)
       mode: 'cors',  // **Política CORS: 'cors' permite solicitudes a otros orígenes**
       headers: {
