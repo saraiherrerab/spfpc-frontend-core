@@ -347,7 +347,7 @@ export async function Nivel5(juegoKaplay:KAPLAYCtx<{},never>, setState5:any, cam
                     
                     const aproboNivelUno = nivelesUsuario.some((nivel: any) => nivel.id_nivel === 5 && nivel.estatus === "APROBADO");
 
-                    const modificarResultado = await modificarNivelUsuario(usuario.id_usuario,5,(aproboNivelUno) ? "APROBADO" : "NO APROBADO")
+                    const modificarResultado = await modificarNivelUsuario(usuario.id_usuario,5,"APROBADO")
                     console.log(modificarResultado)
                   }else{
                     const cargarResultado = await cargarNivelUsuario(usuario.id_usuario,5,"APROBADO")
@@ -490,7 +490,7 @@ export async function Nivel5(juegoKaplay:KAPLAYCtx<{},never>, setState5:any, cam
                   
                   const aproboNivelUno = nivelesUsuario.some((nivel: any) => nivel.id_nivel === 5 && nivel.estatus === "APROBADO");
   
-                  const modificarResultado = await modificarNivelUsuario(usuario.id_usuario,5,(aproboNivelUno) ? "APROBADO" : "NO APROBADO")
+                  const modificarResultado = await modificarNivelUsuario(usuario.id_usuario,5,"APROBADO")
                   console.log(modificarResultado)
                 }else{
                   const cargarResultado = await cargarNivelUsuario(usuario.id_usuario,5,"APROBADO")
@@ -540,6 +540,17 @@ export async function Nivel5(juegoKaplay:KAPLAYCtx<{},never>, setState5:any, cam
                   setStateC(true);
                   juegoKaplay.play("perdido", { volume: 1, speed: 1, loop: false });
                   console.log("MORISTE")
+                  if(existeNivelCinco){
+                    const nivelesUsuario = await obtenerNivelesUsuario(usuario.id_usuario)
+                    
+                    const aproboNivelUno = nivelesUsuario.some((nivel: any) => nivel.id_nivel === 5 && nivel.estatus === "APROBADO");
+    
+                    const modificarResultado = await modificarNivelUsuario(usuario.id_usuario,5,(aproboNivelUno) ? "APROBADO" : "NO APROBADO")
+                    console.log(modificarResultado)
+                  }else{
+                    const cargarResultado = await cargarNivelUsuario(usuario.id_usuario,5,"NO APROBADO")
+                    console.log(cargarResultado)
+                  }
                   await sleep(2000)
                   window.location.href = window.location.href
                 }
@@ -613,7 +624,7 @@ export async function Nivel5(juegoKaplay:KAPLAYCtx<{},never>, setState5:any, cam
                     
                     const aproboNivelUno = nivelesUsuario.some((nivel: any) => nivel.id_nivel === 5 && nivel.estatus === "APROBADO");
 
-                    const modificarResultado = await modificarNivelUsuario(usuario.id_usuario,5,(aproboNivelUno) ? "APROBADO" : "NO APROBADO")
+                    const modificarResultado = await modificarNivelUsuario(usuario.id_usuario,5,"APROBADO")
                     console.log(modificarResultado)
                   }else{
                     const cargarResultado = await cargarNivelUsuario(usuario.id_usuario,5,"APROBADO")
@@ -632,7 +643,7 @@ export async function Nivel5(juegoKaplay:KAPLAYCtx<{},never>, setState5:any, cam
                   
                   const aproboNivelUno = nivelesUsuario.some((nivel: any) => nivel.id_nivel === 5 && nivel.estatus === "APROBADO");
   
-                  const modificarResultado = await modificarNivelUsuario(usuario.id_usuario,5,(aproboNivelUno) ? "APROBADO" : "NO APROBADO")
+                  const modificarResultado = await modificarNivelUsuario(usuario.id_usuario,5,"APROBADO")
                   console.log(modificarResultado)
                 }else{
                   const cargarResultado = await cargarNivelUsuario(usuario.id_usuario,5,"APROBADO")

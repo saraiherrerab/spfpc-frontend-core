@@ -524,7 +524,7 @@ export async function Nivel2(juegoKaplay:KAPLAYCtx<{},never>, setStateB:any, cam
                           
                           const aproboNivelUno = nivelesUsuario.some((nivel: any) => nivel.id_nivel === 1 && nivel.estatus === "APROBADO");
         
-                          const modificarResultado = await modificarNivelUsuario(usuario.id_usuario,1,(aproboNivelUno) ? "APROBADO" : "NO APROBADO")
+                          const modificarResultado = await modificarNivelUsuario(usuario.id_usuario,1,"APROBADO")
                           console.log(modificarResultado)
                         }else{
                           const cargarResultado = await cargarNivelUsuario(usuario.id_usuario,1,"APROBADO")

@@ -374,7 +374,7 @@ export async function Nivel1(
                   
                   const aproboNivelUno = nivelesUsuario.some((nivel: any) => nivel.id_nivel === 2 && nivel.estatus === "APROBADO");
 
-                  const modificarResultado = await modificarNivelUsuario(usuario.id_usuario,2,(aproboNivelUno) ? "APROBADO" : "NO APROBADO")
+                  const modificarResultado = await modificarNivelUsuario(usuario.id_usuario,2,"APROBADO")
                   console.log(modificarResultado)
                 }else{
                   const cargarResultado = await cargarNivelUsuario(usuario.id_usuario,2,"APROBADO")
@@ -612,7 +612,18 @@ export async function Nivel1(
                     juegoKaplay.play("perdido", { volume: 1, speed: 1.5, loop: false });
                     cambiarGanarC(true);
                     setStateC(true);
-                                        await sleep(5000)
+                    if(existeNivelDos){
+                      const nivelesUsuario = await obtenerNivelesUsuario(usuario.id_usuario)
+                      
+                      const aproboNivelUno = nivelesUsuario.some((nivel: any) => nivel.id_nivel === 2 && nivel.estatus === "APROBADO");
+
+                      const modificarResultado = await modificarNivelUsuario(usuario.id_usuario,2,(aproboNivelUno) ? "APROBADO" : "NO APROBADO")
+                      console.log(modificarResultado)
+                    }else{
+                      const cargarResultado = await cargarNivelUsuario(usuario.id_usuario,2,"NO APROBADO")
+                      console.log(cargarResultado)
+                    }
+                    await sleep(5000)
                     if (usuario.rol === "ESTUDIANTE") {
                       const obtenerDatosUsuario = async (estudiante_seleccionado: number) => {
                         const datosEstudiante = await fetch(`${baseUrl}/estudiantes/` + estudiante_seleccionado);
@@ -712,6 +723,18 @@ export async function Nivel1(
                     console.log(respuestaEvaluacion);
                   } else {
                     console.log("GANO PERO NO ES ESTUDIANTE");
+                  }
+
+                  if(existeNivelDos){
+                    const nivelesUsuario = await obtenerNivelesUsuario(usuario.id_usuario)
+                    
+                    const aproboNivelUno = nivelesUsuario.some((nivel: any) => nivel.id_nivel === 2 && nivel.estatus === "APROBADO");
+
+                    const modificarResultado = await modificarNivelUsuario(usuario.id_usuario,2,(aproboNivelUno) ? "APROBADO" : "NO APROBADO")
+                    console.log(modificarResultado)
+                  }else{
+                    const cargarResultado = await cargarNivelUsuario(usuario.id_usuario,2,"NO APROBADO")
+                    console.log(cargarResultado)
                   }
 
                   await sleep(1000);
